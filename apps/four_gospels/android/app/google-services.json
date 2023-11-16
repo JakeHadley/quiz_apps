@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "449612563741",
+    "project_id": "four-gospels-exigent",
+    "storage_bucket": "four-gospels-exigent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449612563741:android:7e77068ca86e47b7918df4",
+        "android_client_info": {
+          "package_name": "app.exigentdev.four_gospels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449612563741-3b40lc3nup9ttu7tm1e8q9ck59roh4ha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOktwR-KkNt2J7sSWXfb_hrdl2GYHJJrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449612563741-3b40lc3nup9ttu7tm1e8q9ck59roh4ha.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "449612563741-kn5mtvtsp2fd2i93rss5l5o8ccblr9nm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.exigentdev.four-gospels"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

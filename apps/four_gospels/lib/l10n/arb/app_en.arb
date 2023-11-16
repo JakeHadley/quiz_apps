@@ -1,0 +1,191 @@
+{
+    "@@locale": "en",
+    "homePageAppBarTitle": "Four Gospels Quiz",
+    "@homePageAppBarTitle": {
+        "description": "Home page app bar text"
+    },
+    "selectQuizSubtitle": "Select a Quiz",
+    "@selectQuizSubtitle": {
+        "description": "Home page subtitle text"
+    },
+    "singlePlayerHome": "Single Player",
+    "@singlePlayerHome": {
+        "description": "Home page single player button text"
+    },
+    "multiPlayer": "MultiPlayer",
+    "@multiPlayer": {
+        "description": "Home page multiplayer button text"
+    },
+    "speedRound": "Speed Round",
+    "@speedRound": {
+        "description": "Home page speed round button text"
+    },
+    "speed": "Speed",
+    "@speed": {
+        "description": "Speed round confirm settings page summary text"
+    },
+    "singlePlayerAppBar": "Single Player",
+    "@singlePlayerAppBar": {
+        "description": "Single player setup appbar text"
+    },
+    "speedRoundAppBar": "Speed Round",
+    "@speedRoundAppBar": {
+        "description": "Speed round setup appbar text"
+    },
+    "multiPlayerAppBar": "Multiplayer",
+    "@multiPlayerAppBar": {
+        "description": "MultiPlayer setup appbar text"
+    },
+    "difficultySubtitle": "Select a Difficulty",
+    "@difficultySubtitle": {
+        "description": "Difficulty options page subtitle text"
+    },
+    "difficultyEasy": "Easy",
+    "@difficultyEasy": {
+        "description": "Difficulty easy option button text"
+    },
+    "difficultyModerate": "Moderate",
+    "@difficultyModerate": {
+        "description": "Difficulty moderate option button text"
+    },
+    "difficultyHard": "Hard",
+    "@difficultyHard": {
+        "description": "Difficulty hard option button text"
+    },
+    "numberQuestionsSubtitle": "Select how many questions",
+    "@numberQuestionsSubtitle": {
+        "description": "Number of questions page subtitle text"
+    },
+    "confirmSettingsSubtitle": "Ready to test your knowlege?",
+    "@confirmSettingsSubtitle": {
+        "description": "Confirm settings page subtitle text"
+    },
+    "confirmSettingsDifficulty": "Difficulty",
+    "@confirmSettingsDifficulty": {
+        "description": "Difficulty selected option pretext"
+    },
+    "confirmSettingsNumberQuestions": "Questions",
+    "@confirmSettingsNumberQuestions": {
+        "description": "Number questions selected option pretext"
+    },
+    "startButton": "Start",
+    "@startButton": {
+        "description": "Start button text"
+    },
+    "quizSubtitleQuestion": "Question",
+    "@quizSubtitleQuestion": {
+        "description": "Quiz subtitle question portion text"
+    },
+    "quizSubtitleOf": "of",
+    "@quizSubtitleOf": {
+        "description": "Quiz subtitle of portion text"
+    },
+    "submitButton": "Submit",
+    "@submitButton": {
+        "description": "Submit button text"
+    },
+    "finishQuizButton": "See your score",
+    "@finishQuizButton": {
+        "description": "Finish quiz button text"
+    },
+    "nextQuestionButton": "Next Question",
+    "@nextQuestionButton": {
+        "description": "Next question button text"
+    },
+    "endGamePageSubtitle": "Checkout your score!",
+    "@endGamePageSubtitle": {
+        "description": "End game page subtitle text"
+    },
+    "endGameInfoScore": "Points",
+    "@endGameInfoScore": {
+        "description": "End game page score pretext"
+    },
+    "endGamePageCorrectAnswers": "Correct Answers",
+    "@endGamePageCorrectAnswers": {
+        "description": "End game page correct answers pretext"
+    },
+    "endGameButton": "Finish game",
+    "@endGameButton": {
+        "description": "End game button text"
+    },
+    "quitDialogCaption": "Do you want to quit?",
+    "@quitDialogCaption": {
+        "description": "Quit Dialog Caption"
+    },
+    "quitDialogCancel": "Cancel",
+    "@quitDialogCancel": {
+        "description": "Quit dialog cancel button text"
+    },
+    "quitDialogQuit": "Quit",
+    "@quitDialogQuit": {
+        "description": "Quit dialog quit button text"
+    },
+    "comingSoonText": "Coming Soon!",
+    "@comingSoonText": {
+        "description": "Text for Snackbar"
+    },
+    "joinGameButton": "Join a game",
+    "@joinGameButton": {
+        "description": "Text for Join Game Button"
+    },
+    "joinGameAppBar": "Join a game",
+    "@joinGameAppBar": {
+        "description": "Text for Join Game Page App Bar"
+    },
+    "createGameButton": "Create a game",
+    "@createGameButton": {
+        "description": "Text for Create Game Button"
+    },
+    "createGameAppBar": "Create a game",
+    "@createGameAppBar": {
+        "description": "Text for Create Game Page App Bar"
+    },
+    "lobbyAppBar": "Lobby",
+    "@lobbyAppBar": {
+        "description": "Text for Lobby Page App Bar"
+    },
+    "enterNameField": "Enter Your Name",
+    "numQuestions": "Number of Questions",
+    "continueButton": "Continue",
+    "players": "Players",
+    "code": "Code",
+    "share": "Invite friends with code",
+    "@share": {
+        "description": "Shown when sharing a code from Multiplayer. e.g. ('Invite your friends and family with code: \"ABC123\"')"
+    },
+    "enterCodeField": "Enter Code",
+    "joinButton": "Join",
+    "waitingForOwnerStart": "Waiting for the host to start",
+    "@waitingForOwnerStart": {
+        "description": "Shown on multiplayer when a non-owner user joins a lobby"
+    },
+    "roomDeleted": "Room no longer exists",
+    "@roomDeleted": {
+        "description": "Info text to notify user that the multiplayer lobby no longer exists"
+    },
+    "goBackButton": "Go back",
+    "@goBackButton": {
+        "description": "Text on button to tell user to return to home page after lobby has been deleted"
+    },
+    "owner": "host",
+    "@owner": {
+        "description": "Shown next to the owner of the room in the lobby"
+    },
+    "waitingForOwner": "waiting for host",
+    "@waitingForOwner": {
+        "description": "Shown for non-owner users after submitting a question on multiplayer"
+    },
+    "nameTaken": "Name taken",
+    "noRoom": "No room found",
+    "noConnection": "No internet connection!",
+    "playAgainButton": "Play again?",
+    "quizLanguage": "Quiz Language",
+    "deviceInfo": "Device Info",
+    "feedback": "Feedback",
+    "timer": "Timer Amount",
+    "random": "Random",
+    "waitingForGameFinish": "Waiting for game to finish",
+    "feedbackPrompt": "Do you want to provide feedback?",
+    "or": "OR",
+    "nextQuestionPrompt": "Some players have not answered yet. Do you want to continue?"
+}

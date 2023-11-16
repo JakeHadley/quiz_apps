@@ -1,0 +1,9 @@
+name: quiz_apps
+
+packages:
+  - packages/*
+  - apps/*
+
+scripts:
+  analyze:
+    exec: dart analyze .

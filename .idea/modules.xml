@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/apps/four_gospels/melos_four_gospels.iml" filepath="$PROJECT_DIR$/apps/four_gospels/melos_four_gospels.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/quiz_core/melos_quiz_core.iml" filepath="$PROJECT_DIR$/packages/quiz_core/melos_quiz_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_quiz_apps.iml" filepath="$PROJECT_DIR$/melos_quiz_apps.iml" />
+    </modules>
+  </component>
+</project>
