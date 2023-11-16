@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/models/models.dart';
+import 'package:quiz_core/models/score.dart';
 
 class Scoresheet extends StatelessWidget {
   const Scoresheet({

@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:four_gospels/models/models.dart';
 import 'package:four_gospels/quiz/models/models.dart';
 import 'package:four_gospels/services/multi_player_service.dart';
+import 'package:quiz_core/models/score.dart';
 
 part 'multi_player_event.dart';
 part 'multi_player_state.dart';

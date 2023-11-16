@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:four_gospels/models/models.dart';
 import 'package:four_gospels/quiz/models/models.dart';
+import 'package:quiz_core/models/score.dart';
 
 class MultiPlayerService {
   final CollectionReference _roomsCollection =

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:four_gospels/models/score.dart';
-import 'package:four_gospels/quiz/models/models.dart';
+import 'package:four_gospels/quiz/models/mode.dart';
+import 'package:four_gospels/quiz/models/question.dart';
+import 'package:quiz_core/models/score.dart';
 
 class Room {
   const Room({

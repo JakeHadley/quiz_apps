@@ -1,8 +1,8 @@
 import 'package:flag/flag.dart';
 
-/// Languages currently supported in the app
-/// english (en)
-/// portuguese (pt)
+/// Languages currently supported in the app:<br/>
+/// english (en)\
+/// portuguese (pt)\
 /// spanish (es)
 enum Languages {
   /// english
@@ -15,9 +15,9 @@ enum Languages {
   es,
 }
 
-/// Flag widgets list in order of the language
-/// US (english)
-/// BR (portuguese)
+/// Flag widgets list in order of the [Languages] enum:\
+/// US (english)\
+/// BR (portuguese)\
 /// ES (spanish)
 List<Flag> flags = [
   Flag.fromCode(FlagsCode.US),
