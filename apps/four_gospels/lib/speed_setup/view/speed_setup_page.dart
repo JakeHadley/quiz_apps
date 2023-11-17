@@ -6,6 +6,7 @@ import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/quiz/quiz.dart';
 import 'package:four_gospels/timer/timer.dart';
+import 'package:quiz_core/models/models.dart';
 
 @RoutePage()
 class SpeedSetupPage extends StatelessWidget {

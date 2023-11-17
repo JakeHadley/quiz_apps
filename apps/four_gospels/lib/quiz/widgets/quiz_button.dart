@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/quiz/models/models.dart';
+import 'package:quiz_core/models/models.dart';
 
 class QuizButton extends StatelessWidget {
   const QuizButton({

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/multi_player_setup/bloc/multi_player_bloc.dart';
 import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
-import 'package:four_gospels/quiz/models/models.dart';
 import 'package:four_gospels/quiz/widgets/scoresheet.dart';
+import 'package:quiz_core/models/models.dart';
 
 Map<Mode, Widget> gaugeMap = {
   Mode.easy: Image.asset('assets/easy.png'),

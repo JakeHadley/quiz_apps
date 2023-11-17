@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:four_gospels/quiz/helpers/points_helper.dart';
-import 'package:four_gospels/quiz/models/models.dart';
 import 'package:four_gospels/services/services.dart';
 import 'package:meta/meta.dart';
+import 'package:quiz_core/models/models.dart';
 
 part 'quiz_event.dart';
 part 'quiz_state.dart';

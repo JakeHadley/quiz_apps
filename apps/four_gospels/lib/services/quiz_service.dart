@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:four_gospels/quiz/models/models.dart';
-import 'package:quiz_core/models/language.dart';
+import 'package:quiz_core/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QuizService {

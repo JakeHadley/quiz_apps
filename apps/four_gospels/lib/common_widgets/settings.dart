@@ -2,8 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:four_gospels/common_widgets/settings_content.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/models/models.dart';
-import 'package:four_gospels/quiz/quiz.dart';
+import 'package:four_gospels/quiz/models/mode.dart';
 import 'package:quiz_core/models/models.dart';
 
 class Settings extends StatefulWidget {

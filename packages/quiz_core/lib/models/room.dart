@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:four_gospels/quiz/models/mode.dart';
-import 'package:four_gospels/quiz/models/question.dart';
-import 'package:quiz_core/models/score.dart';
+import 'package:quiz_core/models/models.dart';
 
+/// [Room] object for multiplayer quizzes
 class Room {
+  /// Creates a [Room] object
   const Room({
     required this.users,
     required this.code,
@@ -19,6 +19,7 @@ class Room {
     required this.scores,
   });
 
+  ///
   Room.fromJson(Map<String, Object?> json)
       : this(
           users: convertUsersToListOfStrings(
@@ -43,6 +44,7 @@ class Room {
           ),
         );
 
+  ///
   Map<String, Object?> toJson() {
     return {
       'users': users,
@@ -60,10 +62,12 @@ class Room {
     };
   }
 
+  ///
   static List<String> convertUsersToListOfStrings(Iterable<dynamic> users) {
     return List<String>.from(users.map((c) => c));
   }
 
+  ///
   static List<Question> convertQuestionstoListOfQuestions(
     Iterable<dynamic> questions,
   ) {
@@ -72,6 +76,7 @@ class Room {
     return List<Question>.from(questionMap);
   }
 
+  ///
   static List<Score> convertScoresToListOfScores(
     Iterable<dynamic> scores,
   ) {
@@ -80,19 +85,43 @@ class Room {
     return List<Score>.from(scoresMap);
   }
 
+  ///
   final List<String> users;
+
+  ///
   final String code;
+
+  ///
   final DateTime lastInteraction;
+
+  ///
   final String owner;
+
+  ///
   final int numberOfQuestions;
+
+  ///
   final Mode mode;
+
+  ///
   final List<Question> questions;
+
+  ///
   final String language;
+
+  ///
   final String status;
+
+  ///
   final List<String> usersAnswered;
+
+  ///
   final int currentQuestionIndex;
+
+  ///
   final List<Score> scores;
 
+  ///
   Room copyWith({
     List<String>? users,
     String? code,
@@ -124,13 +153,20 @@ class Room {
   }
 }
 
+///
 enum RoomExceptionErrorEnum {
+  ///
   name,
+
+  ///
   room,
 }
 
+///
 class RoomException implements Exception {
+  ///
   RoomException(this.error);
 
+  ///
   final RoomExceptionErrorEnum error;
 }

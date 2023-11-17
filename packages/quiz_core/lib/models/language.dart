@@ -1,6 +1,6 @@
 import 'package:flag/flag.dart';
 
-/// Languages currently supported in the app:<br/>
+/// Languages currently supported in the app:\
 /// english (en)\
 /// portuguese (pt)\
 /// spanish (es)

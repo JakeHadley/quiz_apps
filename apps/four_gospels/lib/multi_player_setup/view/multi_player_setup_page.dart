@@ -4,10 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:four_gospels/app/auto_router.dart';
 import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/models/models.dart';
 import 'package:four_gospels/multi_player_setup/bloc/multi_player_bloc.dart';
 import 'package:four_gospels/multi_player_setup/widgets/widgets.dart';
-import 'package:four_gospels/quiz/models/models.dart';
+import 'package:quiz_core/models/models.dart';
 import 'package:random_string/random_string.dart';
 
 @RoutePage()

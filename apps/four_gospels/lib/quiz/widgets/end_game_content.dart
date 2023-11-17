@@ -4,8 +4,8 @@ import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/multi_player_setup/bloc/multi_player_bloc.dart';
 import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
-import 'package:four_gospels/quiz/models/models.dart';
 import 'package:four_gospels/quiz/widgets/widgets.dart';
+import 'package:quiz_core/models/quiz_type.dart';
 
 class EndGameContent extends StatelessWidget {
   const EndGameContent({

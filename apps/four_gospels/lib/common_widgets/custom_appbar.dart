@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:four_gospels/quiz/models/quiz_type.dart';
+import 'package:quiz_core/models/quiz_type.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({

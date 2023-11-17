@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/multi_player_setup/widgets/share_code.dart';
-import 'package:four_gospels/quiz/models/models.dart';
-import 'package:quiz_core/models/language.dart';
+import 'package:four_gospels/quiz/models/mode.dart';
+import 'package:quiz_core/models/models.dart';
 
 class GameInfo extends StatelessWidget {
   const GameInfo({

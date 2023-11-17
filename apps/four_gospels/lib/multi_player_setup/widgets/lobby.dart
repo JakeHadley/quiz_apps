@@ -3,12 +3,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/models/models.dart';
 import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
 import 'package:four_gospels/multi_player_setup/widgets/share_code.dart';
 import 'package:four_gospels/multi_player_setup/widgets/widgets.dart';
 import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
-import 'package:four_gospels/quiz/models/models.dart';
+import 'package:quiz_core/models/models.dart';
 
 class Lobby extends StatelessWidget {
   const Lobby({

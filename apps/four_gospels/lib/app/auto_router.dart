@@ -5,6 +5,7 @@ import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
 import 'package:four_gospels/quiz/quiz.dart';
 import 'package:four_gospels/single_player_setup/single_player_setup.dart';
 import 'package:four_gospels/speed_setup/speed_setup.dart';
+import 'package:quiz_core/models/quiz_type.dart';
 
 part 'auto_router.gr.dart';
 

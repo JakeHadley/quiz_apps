@@ -10,11 +10,13 @@ import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
 import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
-import 'package:four_gospels/quiz/models/models.dart';
+import 'package:four_gospels/quiz/models/mode.dart';
+import 'package:four_gospels/quiz/models/quiz_type.dart';
 import 'package:four_gospels/quiz/widgets/back_button_dialog.dart';
 import 'package:four_gospels/quiz/widgets/widgets.dart';
 import 'package:four_gospels/timer/bloc/timer_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:quiz_core/models/models.dart';
 import 'package:screenshot/screenshot.dart';
 
 @RoutePage()

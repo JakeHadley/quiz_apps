@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:four_gospels/models/models.dart';
-import 'package:four_gospels/quiz/models/models.dart';
 import 'package:four_gospels/services/multi_player_service.dart';
-import 'package:quiz_core/models/score.dart';
+import 'package:quiz_core/models/models.dart';
 
 part 'multi_player_event.dart';
 part 'multi_player_state.dart';
@@ -46,9 +44,9 @@ class MultiPlayerBloc extends Bloc<MultiPlayerEvent, MultiPlayerState> {
     );
 
     final roomSnapshot = await roomReference.get();
-    final room = roomSnapshot.data()!;
+    final room = roomSnapshot.data();
 
-    emit(MultiPlayerActive(room: room, name: event.name));
+    emit(MultiPlayerActive(room: room!, name: event.name));
 
     _roomSubscription = roomReference.snapshots().listen(
           (snapshot) => add(MultiPlayerUpdateRoom(room: snapshot.data()!)),
@@ -96,9 +94,9 @@ class MultiPlayerBloc extends Bloc<MultiPlayerEvent, MultiPlayerState> {
       );
 
       final roomSnapshot = await roomReference.get();
-      final room = roomSnapshot.data()!;
+      final room = roomSnapshot.data();
 
-      emit(MultiPlayerActive(room: room, name: event.name));
+      emit(MultiPlayerActive(room: room!, name: event.name));
 
       _roomSubscription = roomReference.snapshots().listen(
         (snapshot) {

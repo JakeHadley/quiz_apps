@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
-import 'package:four_gospels/quiz/models/mode.dart';
+import 'package:quiz_core/models/mode.dart';
 
+/// Question object, data comes from spreadsheet
 class Question extends Equatable {
+  /// Creates a [Question] object
   const Question({
     required this.id,
     required this.mode,
@@ -13,6 +15,7 @@ class Question extends Equatable {
     required this.reference,
   });
 
+  ///
   Question.fromJson(Map<String, Object?> json)
       : this(
           id: json['id']! as int,
@@ -25,6 +28,7 @@ class Question extends Equatable {
           reference: json['reference']! as String,
         );
 
+  ///
   Map<String, Object?> toJson() {
     return {
       'id': id,
@@ -38,13 +42,28 @@ class Question extends Equatable {
     };
   }
 
+  ///
   final int id;
+
+  ///
   final Mode mode;
+
+  ///
   final String question;
+
+  ///
   final String correctAnswer;
+
+  ///
   final String wrongAnswer1;
+
+  ///
   final String wrongAnswer2;
+
+  ///
   final String wrongAnswer3;
+
+  ///
   final String reference;
 
   @override

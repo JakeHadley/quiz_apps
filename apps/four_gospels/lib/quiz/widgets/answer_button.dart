@@ -1,7 +1,7 @@
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:four_gospels/quiz/helpers/points_helper.dart';
-import 'package:four_gospels/quiz/models/models.dart';
+import 'package:quiz_core/models/models.dart';
 
 class AnswerButton extends StatelessWidget {
   const AnswerButton({
