@@ -5,6 +5,7 @@ import 'package:four_gospels/app/auto_router.dart';
 import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/quiz/quiz.dart';
+import 'package:quiz_core/common_widgets/custom_appbar.dart';
 import 'package:quiz_core/models/models.dart';
 
 @RoutePage()

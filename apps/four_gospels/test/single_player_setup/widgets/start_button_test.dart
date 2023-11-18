@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:four_gospels/common_widgets/action_button.dart';
+import 'package:quiz_core/common_widgets/action_button.dart';
 
 import '../../helpers/helpers.dart';
 

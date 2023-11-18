@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+///
 class ActionButton extends StatelessWidget {
+  ///
   const ActionButton({
     required this.onPress,
     required this.isLoading,
@@ -11,11 +13,22 @@ class ActionButton extends StatelessWidget {
     super.key,
   });
 
+  ///
   final VoidCallback onPress;
+
+  ///
   final bool isLoading;
+
+  ///
   final String text;
+
+  ///
   final double height;
+
+  ///
   final Color? color;
+
+  ///
   final TextStyle? textStyle;
 
   @override

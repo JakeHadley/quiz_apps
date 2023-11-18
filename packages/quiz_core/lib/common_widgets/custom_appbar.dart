@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_core/models/quiz_type.dart';
 
+///
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  ///
   const CustomAppBar({
     required this.title,
     super.key,
@@ -10,11 +12,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.type,
   });
 
+  /// Text for app bar
   final String title;
+
+  ///
   final Widget? backButton;
+
+  ///
   final VoidCallback? feedbackAction;
+
+  ///
   final QuizType? type;
 
+  /// returns correct color based on [QuizType]
   Color? getColor(ThemeData theme) {
     switch (type) {
       case QuizType.single:

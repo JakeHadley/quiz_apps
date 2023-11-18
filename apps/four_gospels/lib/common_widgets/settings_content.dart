@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/quiz/quiz.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:quiz_core/common_widgets/action_button.dart';
 import 'package:quiz_core/models/models.dart';
 
 class SettingsContent extends StatelessWidget {

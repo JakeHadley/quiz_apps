@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:four_gospels/app/auto_router.dart';
-import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
 import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
@@ -16,6 +15,7 @@ import 'package:four_gospels/quiz/widgets/back_button_dialog.dart';
 import 'package:four_gospels/quiz/widgets/widgets.dart';
 import 'package:four_gospels/timer/bloc/timer_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:quiz_core/common_widgets/custom_appbar.dart';
 import 'package:quiz_core/models/models.dart';
 import 'package:screenshot/screenshot.dart';
 

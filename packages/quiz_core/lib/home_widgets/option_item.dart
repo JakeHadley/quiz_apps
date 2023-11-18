@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+///
 class OptionItem extends StatelessWidget {
+  ///
   const OptionItem({
     required this.text,
     required this.action,
@@ -11,11 +13,22 @@ class OptionItem extends StatelessWidget {
     this.equalWidth = false,
   });
 
+  ///
   final String text;
+
+  ///
   final void Function()? action;
+
+  ///
   final Color color;
+
+  ///
   final Widget iconWidget;
+
+  ///
   final bool darkText;
+
+  ///
   final bool equalWidth;
 
   @override

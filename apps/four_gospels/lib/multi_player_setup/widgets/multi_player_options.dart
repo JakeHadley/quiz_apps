@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/common_widgets/action_button.dart';
 import 'package:four_gospels/l10n/l10n.dart';
 import 'package:four_gospels/multi_player_setup/bloc/multi_player_bloc.dart';
 import 'package:four_gospels/multi_player_setup/widgets/input.dart';
+import 'package:quiz_core/common_widgets/action_button.dart';
 import 'package:quiz_core/models/room.dart';
 
 class MultiPlayerOptions extends StatelessWidget {

@@ -7,6 +7,7 @@ import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
 import 'package:four_gospels/multi_player_setup/widgets/share_code.dart';
 import 'package:four_gospels/multi_player_setup/widgets/widgets.dart';
 import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
+import 'package:quiz_core/common_widgets/action_button.dart';
 import 'package:quiz_core/models/models.dart';
 
 class Lobby extends StatelessWidget {

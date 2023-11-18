@@ -13,7 +13,6 @@ dependencies:
   carousel_slider: ^4.2.1
   cloud_firestore: ^4.3.1
   cloud_functions: ^4.3.3
-  connectivity_plus: ^4.0.2
   device_info_plus: ^9.0.3
   equatable: ^2.0.3
   firebase_analytics: ^10.1.0

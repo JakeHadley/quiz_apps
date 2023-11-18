@@ -1,31 +1,49 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:four_gospels/app/auto_router.dart';
-import 'package:four_gospels/home/widgets/option_item.dart';
-import 'package:four_gospels/l10n/l10n.dart';
+import 'package:quiz_core/home_widgets/option_item.dart';
 
-class GameOptions extends StatefulWidget {
-  const GameOptions({super.key});
+///
+class GameOptions extends StatelessWidget {
+  ///
+  const GameOptions({
+    required this.navigateToSingle,
+    required this.navigateToMulti,
+    required this.navigateToSpeed,
+    required this.onNoConnection,
+    required this.subtitleText,
+    required this.singleText,
+    required this.multiText,
+    required this.speedText,
+    super.key,
+  });
 
-  @override
-  State<GameOptions> createState() => _GameOptionsState();
-}
+  ///
+  final VoidCallback navigateToSingle;
 
-class _GameOptionsState extends State<GameOptions> {
+  ///
+  final VoidCallback navigateToMulti;
+
+  ///
+  final VoidCallback navigateToSpeed;
+
+  ///
+  final VoidCallback onNoConnection;
+
+  ///
+  final String subtitleText;
+
+  ///
+  final String singleText;
+
+  ///
+  final String multiText;
+
+  ///
+  final String speedText;
+
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final theme = Theme.of(context);
-
-    void showConnectionSnackbar() {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.noConnection),
-          backgroundColor: theme.colorScheme.error,
-        ),
-      );
-    }
 
     return StreamBuilder<ConnectivityResult>(
       stream: Connectivity().onConnectivityChanged,
@@ -36,11 +54,10 @@ class _GameOptionsState extends State<GameOptions> {
         if (snapshot.hasData &&
             (snapshot.data == ConnectivityResult.mobile ||
                 snapshot.data == ConnectivityResult.wifi)) {
-          multiPlayerFunction =
-              () => context.router.push(const MultiPlayerSetupRoute());
+          multiPlayerFunction = navigateToMulti;
           multiPlayerColor = theme.colorScheme.secondary;
         } else {
-          multiPlayerFunction = showConnectionSnackbar;
+          multiPlayerFunction = onNoConnection;
           multiPlayerColor = theme.disabledColor;
         }
         return Padding(
@@ -52,29 +69,28 @@ class _GameOptionsState extends State<GameOptions> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    l10n.selectQuizSubtitle,
+                    subtitleText,
                     style: theme.textTheme.titleMedium,
                   ),
                 ),
               ),
               OptionItem(
-                text: l10n.singlePlayerHome,
-                action: () =>
-                    context.router.push(const SinglePlayerSetupRoute()),
+                text: singleText,
+                action: navigateToSingle,
                 color: theme.primaryColorDark,
                 iconWidget: const Icon(Icons.person, size: 80),
               ),
               const SizedBox(height: 20),
               OptionItem(
-                text: l10n.multiPlayer,
+                text: multiText,
                 action: multiPlayerFunction,
                 color: multiPlayerColor,
                 iconWidget: const Icon(Icons.groups, size: 80),
               ),
               const SizedBox(height: 20),
               OptionItem(
-                text: l10n.speedRound,
-                action: () => context.router.push(const SpeedSetupRoute()),
+                text: speedText,
+                action: navigateToSpeed,
                 color: theme.colorScheme.tertiary,
                 iconWidget: const Icon(Icons.av_timer, size: 80),
               ),
