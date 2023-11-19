@@ -1,1 +1,1 @@
-export 'view/single_player_setup_page.dart';
+export 'single_player_setup_page.dart';

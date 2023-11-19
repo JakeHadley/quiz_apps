@@ -1,18 +1,24 @@
 part of 'quiz_bloc.dart';
 
+///
 @immutable
 abstract class QuizState extends Equatable {
+  ///
   const QuizState();
 
   @override
   List<Object?> get props => [];
 }
 
+///
 class QuizInitial extends QuizState {}
 
+///
 class QuizLoading extends QuizState {}
 
+///
 class QuizLoaded extends QuizState {
+  ///
   const QuizLoaded({
     required this.numberOfQuestions,
     required this.questions,
@@ -29,6 +35,7 @@ class QuizLoaded extends QuizState {
     this.timer = 15,
   });
 
+  ///
   QuizLoaded copyWith({
     int? numberOfQuestions,
     List<Question>? questions,
@@ -62,18 +69,43 @@ class QuizLoaded extends QuizState {
     );
   }
 
+  ///
   final int numberOfQuestions;
+
+  ///
   final List<Question> questions;
+
+  ///
   final Mode mode;
+
+  ///
   final QuizType type;
+
+  ///
   final QuizStart prevEvent;
+
+  ///
   final int numberOfPoints;
+
+  ///
   final int numberCorrect;
+
+  ///
   final int currentQuestionIndex;
+
+  ///
   final bool currentQuestionAnswered;
+
+  ///
   final bool isCorrect;
+
+  ///
   final List<Answer> answerList;
+
+  ///
   final Answer selectedAnswer;
+
+  ///
   final int timer;
 
   @override
@@ -94,7 +126,9 @@ class QuizLoaded extends QuizState {
       ];
 }
 
+///
 class QuizComplete extends QuizState {
+  ///
   const QuizComplete({
     required this.numberOfQuestions,
     required this.numberCorrect,
@@ -103,9 +137,18 @@ class QuizComplete extends QuizState {
     required this.prevEvent,
   });
 
+  ///
   final int numberOfPoints;
+
+  ///
   final int numberOfQuestions;
+
+  ///
   final int numberCorrect;
+
+  ///
   final QuizType type;
+
+  ///
   final QuizStart prevEvent;
 }

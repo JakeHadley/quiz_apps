@@ -1,5 +1,6 @@
 import 'package:quiz_core/models/models.dart';
 
+///
 int getPoints(Mode questionMode, QuizType type) {
   if (type == QuizType.speed) {
     return 5;

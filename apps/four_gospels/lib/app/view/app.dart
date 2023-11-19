@@ -5,10 +5,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:four_gospels/app/auto_router.dart';
 import 'package:four_gospels/app/quiz_theme.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
-import 'package:four_gospels/quiz/quiz.dart';
-import 'package:four_gospels/services/services.dart';
-import 'package:four_gospels/timer/timer.dart';
+import 'package:quiz_core/blocs/blocs.dart';
+import 'package:quiz_core/services/services.dart';
 
 class App extends StatelessWidget {
   App({super.key});

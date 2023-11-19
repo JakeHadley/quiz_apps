@@ -6,15 +6,21 @@ import 'package:equatable/equatable.dart';
 part 'timer_event.dart';
 part 'timer_state.dart';
 
+///
 class Ticker {
+  ///
   const Ticker();
+
+  ///
   Stream<int> tick({required int ticks}) {
     return Stream.periodic(const Duration(seconds: 1), (x) => ticks - x - 1)
         .take(ticks);
   }
 }
 
+///
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
+  ///
   TimerBloc({required Ticker ticker})
       : _ticker = ticker,
         super(const TimerInitial(15)) {

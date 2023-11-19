@@ -1,14 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:four_gospels/quiz/helpers/points_helper.dart';
-import 'package:four_gospels/services/services.dart';
 import 'package:meta/meta.dart';
+import 'package:quiz_core/helpers/points_helper.dart';
 import 'package:quiz_core/models/models.dart';
+import 'package:quiz_core/services/quiz_service.dart';
 
 part 'quiz_event.dart';
 part 'quiz_state.dart';
 
+///
 class QuizBloc extends Bloc<QuizEvent, QuizState> {
+  ///
   QuizBloc({required this.quizService}) : super(QuizInitial()) {
     on<QuizStart>(_onQuizStart);
     on<QuizNextQuestion>(_onQuizNextQuestion);
@@ -19,6 +21,7 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
     on<QuizLoad>(_onQuizLoad);
   }
 
+  ///
   final QuizService quizService;
 
   Future<void> _onQuizStart(QuizStart event, Emitter<QuizState> emit) async {

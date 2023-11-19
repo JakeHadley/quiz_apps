@@ -1,1 +1,1 @@
-export 'view/speed_setup_page.dart';
+export 'speed_setup_page.dart';

@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:four_gospels/app/auto_router.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
-import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
 import 'package:four_gospels/quiz/models/quiz_type.dart';
 import 'package:four_gospels/quiz/widgets/widgets.dart';
-import 'package:four_gospels/timer/timer.dart';
+import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/common_widgets/custom_appbar.dart';
 import 'package:quiz_core/models/quiz_type.dart';
 

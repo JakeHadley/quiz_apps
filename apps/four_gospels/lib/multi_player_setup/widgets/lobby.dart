@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/common_widgets/common_widgets.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
 import 'package:four_gospels/multi_player_setup/widgets/share_code.dart';
 import 'package:four_gospels/multi_player_setup/widgets/widgets.dart';
-import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
-import 'package:quiz_core/common_widgets/action_button.dart';
+import 'package:four_gospels/quiz/models/mode.dart';
+import 'package:quiz_core/blocs/multi_player_bloc/multi_player_bloc.dart';
+import 'package:quiz_core/blocs/quiz_bloc/quiz_bloc.dart';
+import 'package:quiz_core/common_widgets/common_widgets.dart';
 import 'package:quiz_core/models/models.dart';
 
 class Lobby extends StatelessWidget {
@@ -81,6 +81,13 @@ class Lobby extends StatelessWidget {
                             ) =>
                                 onChangeSettings(room.code, option, value),
                             isCompact: true,
+                            getModeString: (Mode mode) =>
+                                getModeString(mode, l10n),
+                            numQuestionsText: l10n.numQuestions,
+                            timerText: l10n.timer,
+                            confirmText: l10n.confirmSettingsDifficulty,
+                            languageText: l10n.quizLanguage,
+                            startButtonText: l10n.startButton,
                           ),
                           ShareCode(code: room.code),
                         ],

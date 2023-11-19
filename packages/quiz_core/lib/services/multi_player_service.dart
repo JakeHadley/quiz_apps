@@ -2,14 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:quiz_core/models/models.dart';
 
+///
 class MultiPlayerService {
   final CollectionReference _roomsCollection =
       FirebaseFirestore.instance.collection('rooms').withConverter<Room>(
             fromFirestore: (snapshot, _) => Room.fromJson(snapshot.data()!),
             toFirestore: (room, _) => room.toJson(),
           );
+
+  ///
   final FirebaseFunctions functions = FirebaseFunctions.instance;
 
+  ///
   Future<DocumentReference<Room>> createRoom(
     String name,
     int numQuestions,
@@ -39,6 +43,7 @@ class MultiPlayerService {
     );
   }
 
+  ///
   Future<DocumentReference<Room>> joinRoom(
     String name,
     String code,
@@ -64,11 +69,13 @@ class MultiPlayerService {
     return roomReference;
   }
 
+  ///
   Future<void> removeRoom(String code) async {
     final roomReference = await _getRoom(code);
     await roomReference.delete();
   }
 
+  ///
   Future<void> removeUserFromRoom(String name, String code) async {
     final roomReference = await _getRoom(code);
     final roomDocSnapshot = await roomReference.get();
@@ -80,6 +87,7 @@ class MultiPlayerService {
     }
   }
 
+  ///
   Future<void> getQuestions(String code) async {
     final getQuestions = GetQuestions(code: code);
     await functions
@@ -87,6 +95,7 @@ class MultiPlayerService {
         .call<void>(getQuestions.toJson());
   }
 
+  ///
   Future<void> addUserAnswered(String code, String name) async {
     final roomReference = await _getRoom(code);
     final roomDocSnapshot = await roomReference.get();
@@ -96,6 +105,7 @@ class MultiPlayerService {
     await roomReference.set(room.copyWith(usersAnswered: usersAnswered));
   }
 
+  ///
   Future<void> moveToNextQuestion(String code) async {
     final roomReference = await _getRoom(code);
     final roomDocSnapshot = await roomReference.get();
@@ -109,6 +119,7 @@ class MultiPlayerService {
     );
   }
 
+  ///
   Future<void> addScore(
     String code,
     Score score,
@@ -121,6 +132,7 @@ class MultiPlayerService {
     await roomReference.set(room.copyWith(scores: scores));
   }
 
+  ///
   Future<void> modifyRoomSettings(
     String code,
     SettingsOptions option,
@@ -134,16 +146,14 @@ class MultiPlayerService {
       case SettingsOptions.questions:
         await roomReference
             .set(room!.copyWith(numberOfQuestions: value as int));
-        break;
       case SettingsOptions.difficulty:
         await roomReference.set(room!.copyWith(mode: value as Mode));
-        break;
       case SettingsOptions.language:
         await roomReference.set(room!.copyWith(language: value as String));
-        break;
     }
   }
 
+  ///
   Future<void> restartGame(String code) async {
     final roomReference = await _getRoom(code);
     final roomDocSnapshot = await roomReference.get();
@@ -186,11 +196,15 @@ class MultiPlayerService {
   }
 }
 
+///
 class GetQuestions {
+  ///
   GetQuestions({required this.code});
 
+  ///
   final String code;
 
+  ///
   Map<String, Object?> toJson() {
     return {
       'code': code,

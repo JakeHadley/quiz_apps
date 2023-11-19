@@ -15,3 +15,7 @@ extension LocalizedMode on Mode {
     return '';
   }
 }
+
+String getModeString(Mode mode, AppLocalizations l10n) {
+  return mode.toStringIntl(l10n);
+}

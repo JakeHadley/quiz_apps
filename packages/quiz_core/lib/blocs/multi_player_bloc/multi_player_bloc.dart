@@ -3,13 +3,15 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:four_gospels/services/multi_player_service.dart';
 import 'package:quiz_core/models/models.dart';
+import 'package:quiz_core/services/multi_player_service.dart';
 
 part 'multi_player_event.dart';
 part 'multi_player_state.dart';
 
+///
 class MultiPlayerBloc extends Bloc<MultiPlayerEvent, MultiPlayerState> {
+  ///
   MultiPlayerBloc({required this.multiPlayerService})
       : super(MultiPlayerInitial()) {
     on<MultiPlayerCreateRoom>(_onMultiPlayerCreateRoom);
@@ -26,6 +28,7 @@ class MultiPlayerBloc extends Bloc<MultiPlayerEvent, MultiPlayerState> {
     on<MultiPlayerUpdatePoints>(_onMultiPlayerUpdatePoints);
   }
 
+  ///
   final MultiPlayerService multiPlayerService;
   StreamSubscription<DocumentSnapshot>? _roomSubscription;
 

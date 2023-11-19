@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/quiz/helpers/helpers.dart';
+import 'package:quiz_core/helpers/helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Reference extends StatelessWidget {

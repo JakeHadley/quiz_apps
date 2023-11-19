@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/multi_player_setup/multi_player_setup.dart';
-import 'package:four_gospels/quiz/bloc/quiz_bloc.dart';
 import 'package:four_gospels/quiz/widgets/widgets.dart';
+import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/models/models.dart';
 
 class QuizContent extends StatefulWidget {

@@ -1,21 +1,42 @@
 import 'package:quiz_core/models/language.dart';
 
+///
 const baseUrl = 'https://www.churchofjesuschrist.org/study/scriptures/nt/';
+
+///
 const matthew = ['Matthew', 'Mateus'];
+
+///
 const mark = ['Mark', 'Marcos'];
+
+///
 const luke = ['Luke', 'Lucas'];
+
+///
 const john = ['John', 'João'];
+
+///
 const colossians = ['Colossians', 'Colossenses'];
 
+///
 class ParsedEntry {
+  ///
   ParsedEntry(this.book, this.chapter, this.verses, this.start);
 
+  ///
   final String book;
+
+  ///
   final String chapter;
+
+  ///
   final String verses;
+
+  ///
   final String start;
 }
 
+///
 String getBook(String ref) {
   if (matthew.contains(ref)) {
     return 'matt';
@@ -31,6 +52,7 @@ String getBook(String ref) {
   return '';
 }
 
+///
 ParsedEntry parseEntry(String entry) {
   final halves = entry.split(':');
   var book = '';
@@ -72,6 +94,7 @@ ParsedEntry parseEntry(String entry) {
   return ParsedEntry(book, chapter, verses, start);
 }
 
+///
 String getLanguage(String language) {
   if (language == Languages.en.name) {
     return 'eng';
@@ -83,6 +106,7 @@ String getLanguage(String language) {
   return '';
 }
 
+///
 Uri getUriFromReference(String reference, String locale) {
   final lang = getLanguage(locale);
 

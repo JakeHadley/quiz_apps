@@ -1,29 +1,62 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:four_gospels/common_widgets/settings_content.dart';
-import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/quiz/models/mode.dart';
+import 'package:quiz_core/common_widgets/settings_content.dart';
 import 'package:quiz_core/models/models.dart';
 
+///
 class Settings extends StatefulWidget {
+  ///
   const Settings({
     required this.type,
     required this.onStateChange,
     required this.isCompact,
+    required this.getModeString,
+    required this.numQuestionsText,
+    required this.timerText,
+    required this.confirmText,
+    required this.languageText,
+    required this.startButtonText,
     this.onPress,
     this.onChangeSettings,
     super.key,
   });
 
+  ///
   final QuizType type;
+
+  ///
   final void Function({int? timer}) onStateChange;
+
+  ///
   final bool isCompact;
+
+  ///
+  final String Function(Mode mode) getModeString;
+
+  ///
+  final String numQuestionsText;
+
+  ///
+  final String timerText;
+
+  ///
+  final String confirmText;
+
+  ///
+  final String languageText;
+
+  ///
+  final String startButtonText;
+
+  ///
   final void Function({
     required Mode mode,
     required String language,
     int? questions,
     int? timer,
   })? onPress;
+
+  ///
   final void Function(
     SettingsOptions option,
     dynamic value,
@@ -72,7 +105,6 @@ class _SettingsState extends State<Settings> {
   Widget _choiceChipGenerator(
     int index,
     ThemeData theme,
-    AppLocalizations l10n,
   ) {
     final mode = Mode.values[index];
 
@@ -81,7 +113,8 @@ class _SettingsState extends State<Settings> {
       child: ChoiceChip(
         selectedColor: theme.primaryColorLight,
         label: Text(
-          mode.toStringIntl(l10n),
+          // mode.toStringIntl(l10n),
+          widget.getModeString(mode),
           style: theme.textTheme.bodyLarge
               ?.copyWith(fontSize: widget.isCompact ? 16 : 20),
         ),
@@ -112,12 +145,11 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final theme = Theme.of(context);
 
     final chips = List.generate(
       Mode.values.length,
-      (int index) => _choiceChipGenerator(index, theme, l10n),
+      (int index) => _choiceChipGenerator(index, theme),
     );
 
     return SettingsContent(
@@ -139,6 +171,11 @@ class _SettingsState extends State<Settings> {
         timer: _timer,
       ),
       isCompact: widget.isCompact,
+      numQuestionsText: widget.numQuestionsText,
+      timerText: widget.timerText,
+      confirmText: widget.confirmText,
+      languageText: widget.languageText,
+      startButtonText: widget.startButtonText,
     );
   }
 }

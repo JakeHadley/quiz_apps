@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quiz_core/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+///
 class QuizService {
+  ///
   QuizService() {
     _getAllQuestions();
   }
@@ -123,6 +125,7 @@ class QuizService {
     return ids;
   }
 
+  ///
   Future<List<Question>> getQuestions(
     int numberOfQuestions,
     Mode mode,
@@ -159,9 +162,17 @@ class QuizService {
   }
 }
 
+///
 enum CollectionNames {
+  ///
   questionsPor,
+
+  ///
   questionsEng,
+
+  ///
   questionsSpa,
+
+  ///
   stats,
 }
