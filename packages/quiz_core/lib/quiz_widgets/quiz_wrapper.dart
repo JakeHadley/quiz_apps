@@ -7,12 +7,8 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/common_widgets/common_widgets.dart';
-import 'package:quiz_core/models/answer.dart';
-import 'package:quiz_core/models/mode.dart';
-import 'package:quiz_core/models/quiz_type.dart';
-import 'package:quiz_core/quiz_widgets/back_button_dialog.dart';
-import 'package:quiz_core/quiz_widgets/quiz_back_button.dart';
-import 'package:quiz_core/quiz_widgets/quiz_content.dart';
+import 'package:quiz_core/models/models.dart';
+import 'package:quiz_core/quiz_widgets/quiz_widgets.dart';
 import 'package:screenshot/screenshot.dart';
 
 ///

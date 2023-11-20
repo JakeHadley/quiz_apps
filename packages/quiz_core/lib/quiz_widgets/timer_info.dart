@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_core/blocs/quiz_bloc/quiz_bloc.dart';
-import 'package:quiz_core/blocs/timer_bloc/timer_bloc.dart';
+import 'package:quiz_core/blocs/blocs.dart';
 
 ///
 class TimerInfo extends StatelessWidget {
