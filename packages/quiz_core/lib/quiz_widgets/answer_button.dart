@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:quiz_core/helpers/points_helper.dart';
 import 'package:quiz_core/models/models.dart';
 
+///
 class AnswerButton extends StatelessWidget {
+  ///
   const AnswerButton({
     required this.answer,
     required this.currentQuestionAnswered,
@@ -14,15 +16,26 @@ class AnswerButton extends StatelessWidget {
     super.key,
   });
 
+  ///
   final Answer answer;
+
+  ///
   final bool currentQuestionAnswered;
+
+  ///
   final void Function({
     required Answer answer,
     required QuizType quizType,
     required Mode questionMode,
   }) onPress;
+
+  ///
   final Answer selectedAnswer;
+
+  ///
   final QuizType quizType;
+
+  ///
   final Mode questionMode;
 
   @override

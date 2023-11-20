@@ -1,24 +1,30 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:four_gospels/l10n/l10n.dart';
 import 'package:quiz_core/helpers/helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+///
 class Reference extends StatelessWidget {
+  ///
   const Reference({
     required this.reference,
     required this.currentQuestionAnswered,
+    required this.localeNameText,
     super.key,
   });
 
+  ///
   final String reference;
+
+  ///
   final bool currentQuestionAnswered;
+
+  ///
+  final String localeNameText;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
-    final uri = getUriFromReference(reference, l10n.localeName);
+    final uri = getUriFromReference(reference, localeNameText);
     return AnimatedOpacity(
       opacity: currentQuestionAnswered ? 1 : 0,
       duration:

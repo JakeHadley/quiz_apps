@@ -13,3 +13,7 @@ extension LocalizedQuizType on QuizType {
     return '';
   }
 }
+
+String getTypeString(QuizType type, AppLocalizations l10n) {
+  return type.toStringIntl(l10n);
+}

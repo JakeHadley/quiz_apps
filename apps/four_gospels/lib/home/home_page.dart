@@ -8,12 +8,12 @@ import 'package:quiz_core/home_widgets/home_widgets.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  void navigateToMulti(BuildContext context) {
-    context.router.push(const MultiPlayerSetupRoute());
-  }
-
   void navigateToSingle(BuildContext context) {
     context.router.push(const SinglePlayerSetupRoute());
+  }
+
+  void navigateToMulti(BuildContext context) {
+    context.router.push(const MultiPlayerSetupRoute());
   }
 
   void navigateToSpeed(BuildContext context) {

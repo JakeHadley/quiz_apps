@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/quiz/widgets/widgets.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/models/models.dart';
+import 'package:quiz_core/quiz_widgets/quiz_widgets.dart';
 
+///
 class QuizContent extends StatefulWidget {
+  ///
   const QuizContent({
     required this.onNextQuestionPress,
     required this.onAnswerPress,
@@ -12,32 +14,75 @@ class QuizContent extends StatefulWidget {
     required this.onSubmit,
     required this.advanceMultiPlayerQuestion,
     required this.onPointsChanged,
+    required this.submitText,
+    required this.finishQuizText,
+    required this.nextQuestionText,
+    required this.waitingForOwnerText,
+    required this.quizSubtitleText,
+    required this.quizSubtitleOfText,
+    required this.endGameInfoText,
+    required this.localeNameText,
     super.key,
   });
 
+  ///
   final void Function({
     required QuizType quizType,
     required Mode questionMode,
     required bool allNotAnswered,
   }) onNextQuestionPress;
+
+  ///
   final void Function({
     required Answer answer,
     required QuizType quizType,
     required Mode questionMode,
   }) onAnswerPress;
+
+  ///
   final void Function({
     required int score,
     required QuizType quizType,
   }) onQuizEnded;
+
+  ///
   final void Function({
     required bool isCorrect,
     required QuizType quizType,
   }) onSubmit;
+
+  ///
   final void Function({required int indexToSet}) advanceMultiPlayerQuestion;
+
+  ///
   final void Function({
     required String code,
     required int score,
   }) onPointsChanged;
+
+  ///
+  final String submitText;
+
+  ///
+  final String finishQuizText;
+
+  ///
+  final String nextQuestionText;
+
+  ///
+  final String waitingForOwnerText;
+
+  ///
+  final String quizSubtitleText;
+
+  ///
+  final String quizSubtitleOfText;
+
+  ///
+  final String endGameInfoText;
+
+  ///
+  final String localeNameText;
 
   @override
   State<QuizContent> createState() => _QuizContentState();
@@ -112,7 +157,11 @@ class _QuizContentState extends State<QuizContent> {
                     if (quizState.type == QuizType.speed)
                       TimerInfo(quizState: quizState)
                     else
-                      ProgressInfo(),
+                      ProgressInfo(
+                        quizSubtitleText: widget.quizSubtitleText,
+                        quizSubtitleOfText: widget.quizSubtitleOfText,
+                        endGameInfoText: widget.endGameInfoText,
+                      ),
                     RichText(
                       text: TextSpan(
                         text: currentQuestion.question
@@ -129,6 +178,7 @@ class _QuizContentState extends State<QuizContent> {
                         reference: currentQuestion.reference,
                         currentQuestionAnswered:
                             quizState.currentQuestionAnswered,
+                        localeNameText: widget.localeNameText,
                       ),
                       const SizedBox(height: 10),
                       QuizButton(
@@ -145,6 +195,10 @@ class _QuizContentState extends State<QuizContent> {
                         isMultiOwner: isMultiOwner,
                         questionMode: currentQuestion.mode,
                         allNotAnswered: allNotAnswered,
+                        submitText: widget.submitText,
+                        finishQuizText: widget.finishQuizText,
+                        nextQuestionText: widget.nextQuestionText,
+                        waitingForOwnerText: widget.waitingForOwnerText,
                       ),
                     ],
                     const SizedBox(height: 20),

@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:four_gospels/l10n/l10n.dart';
 import 'package:quiz_core/models/score.dart';
 
+///
 class Scoresheet extends StatelessWidget {
+  ///
   const Scoresheet({
-    required this.l10n,
     required this.theme,
     required this.widget,
     required this.scores,
+    required this.endGameInfoText,
     super.key,
   });
 
-  final AppLocalizations l10n;
+  ///
   final ThemeData theme;
+
+  ///
   final SizedBox widget;
+
+  ///
   final List<Score> scores;
+
+  ///
+  final String endGameInfoText;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,7 @@ class Scoresheet extends StatelessWidget {
                       padding: const EdgeInsets.all(8),
                       child: Center(
                         child: Text(
-                          l10n.endGameInfoScore,
+                          endGameInfoText,
                           style: theme.textTheme.headlineMedium?.merge(
                             TextStyle(
                               color: theme.primaryColor,

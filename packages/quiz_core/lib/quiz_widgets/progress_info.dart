@@ -1,25 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/quiz/widgets/scoresheet.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/models/models.dart';
+import 'package:quiz_core/quiz_widgets/scoresheet.dart';
 
+///
 Map<Mode, Widget> gaugeMap = {
   Mode.easy: Image.asset('assets/easy.png'),
   Mode.moderate: Image.asset('assets/moderate.png'),
   Mode.difficult: Image.asset('assets/difficult.png'),
 };
 
+///
 // ignore: must_be_immutable
 class ProgressInfo extends StatelessWidget {
-  ProgressInfo({super.key});
+  ///
+  ProgressInfo({
+    required this.quizSubtitleText,
+    required this.quizSubtitleOfText,
+    required this.endGameInfoText,
+    super.key,
+  });
 
+  ///
+  final String quizSubtitleText;
+
+  ///
+  final String quizSubtitleOfText;
+
+  ///
+  final String endGameInfoText;
+
+  ///
   double prevValue = 0;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final theme = Theme.of(context);
 
     return BlocBuilder<QuizBloc, QuizState>(
@@ -45,9 +61,9 @@ class ProgressInfo extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    '${l10n.quizSubtitleQuestion} '
+                    '$quizSubtitleText '
                     '${quizState.currentQuestionIndex + 1} '
-                    '${l10n.quizSubtitleOf} ${quizState.numberOfQuestions}',
+                    '$quizSubtitleOfText ${quizState.numberOfQuestions}',
                     style: theme.textTheme.titleSmall,
                   ),
                 ],
@@ -92,11 +108,11 @@ class ProgressInfo extends StatelessWidget {
                       );
                       prevValue = newValue;
                       return Scoresheet(
-                        l10n: l10n,
                         theme: theme,
                         widget: widget,
                         scores: multiState.room.scores
                           ..sort((a, b) => b.score.compareTo(a.score)),
+                        endGameInfoText: endGameInfoText,
                       );
                     }
                     return const SizedBox.shrink();

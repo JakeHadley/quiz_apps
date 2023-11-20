@@ -1,28 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:four_gospels/l10n/l10n.dart';
 
+///
 class BackButtonDialog extends StatelessWidget {
+  ///
   const BackButtonDialog({
     required this.exitAction,
+    required this.captionText,
+    required this.quitText,
+    required this.cancelText,
     super.key,
   });
 
+  ///
   final VoidCallback exitAction;
+
+  ///
+  final String captionText;
+
+  ///
+  final String quitText;
+
+  ///
+  final String cancelText;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
     return AlertDialog(
-      content: Text(l10n.quitDialogCaption),
+      content: Text(captionText),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: Text(l10n.quitDialogCancel),
+          child: Text(cancelText),
         ),
         ElevatedButton(
           onPressed: exitAction,
-          child: Text(l10n.quitDialogQuit),
+          child: Text(quitText),
         ),
       ],
     );

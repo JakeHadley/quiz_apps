@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:four_gospels/l10n/l10n.dart';
 import 'package:quiz_core/common_widgets/action_button.dart';
 import 'package:quiz_core/models/models.dart';
 
+///
 class QuizButton extends StatelessWidget {
+  ///
   const QuizButton({
     required this.currentQuestionAnswered,
     required this.onNextQuestionPress,
@@ -15,30 +16,64 @@ class QuizButton extends StatelessWidget {
     required this.isMultiOwner,
     required this.questionMode,
     required this.allNotAnswered,
+    required this.submitText,
+    required this.finishQuizText,
+    required this.nextQuestionText,
+    required this.waitingForOwnerText,
     super.key,
   });
 
+  ///
   final bool currentQuestionAnswered;
+
+  ///
   final void Function({
     required QuizType quizType,
     required Mode questionMode,
     required bool allNotAnswered,
   }) onNextQuestionPress;
+
+  ///
   final Answer selectedAnswer;
+
+  ///
   final void Function({
     required bool isCorrect,
     required QuizType quizType,
   }) onSubmit;
+
+  ///
   final bool lastQuestion;
+
+  ///
   final QuizType quizType;
+
+  ///
   final bool isMulti;
+
+  ///
   final bool isMultiOwner;
+
+  ///
   final Mode questionMode;
+
+  ///
   final bool allNotAnswered;
+
+  ///
+  final String submitText;
+
+  ///
+  final String finishQuizText;
+
+  ///
+  final String nextQuestionText;
+
+  ///
+  final String waitingForOwnerText;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final theme = Theme.of(context);
 
     VoidCallback onPress;
@@ -46,15 +81,15 @@ class QuizButton extends StatelessWidget {
     String text;
 
     if (!currentQuestionAnswered) {
-      text = l10n.submitButton;
+      text = submitText;
     } else if (!isMulti || isMultiOwner) {
       if (lastQuestion) {
-        text = l10n.finishQuizButton;
+        text = finishQuizText;
       } else {
-        text = l10n.nextQuestionButton;
+        text = nextQuestionText;
       }
     } else {
-      text = l10n.waitingForOwner;
+      text = waitingForOwnerText;
     }
 
     if (!currentQuestionAnswered) {

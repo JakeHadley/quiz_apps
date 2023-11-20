@@ -113,7 +113,6 @@ class _SettingsState extends State<Settings> {
       child: ChoiceChip(
         selectedColor: theme.primaryColorLight,
         label: Text(
-          // mode.toStringIntl(l10n),
           widget.getModeString(mode),
           style: theme.textTheme.bodyLarge
               ?.copyWith(fontSize: widget.isCompact ? 16 : 20),

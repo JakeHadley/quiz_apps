@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
+///
 class InfoBox extends StatelessWidget {
+  ///
   const InfoBox({
     required this.text1,
     required this.text2,
     super.key,
   });
 
+  ///
   final String text1;
+
+  ///
   final String text2;
 
   @override

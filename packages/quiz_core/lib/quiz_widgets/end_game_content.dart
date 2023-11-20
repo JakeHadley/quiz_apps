@@ -1,36 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/quiz/widgets/widgets.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/common_widgets/action_button.dart';
 import 'package:quiz_core/models/quiz_type.dart';
+import 'package:quiz_core/quiz_widgets/info_box.dart';
 
+///
 class EndGameContent extends StatelessWidget {
+  ///
   const EndGameContent({
     required this.onExit,
     required this.onPlayAgain,
     required this.onSinglePlayAgain,
     required this.onStateChange,
+    required this.endGameInfoText,
+    required this.endGamePageCorrectAnswersText,
+    required this.endGamePageSubtitleText,
+    required this.endGameButtonText,
+    required this.playAgainButtonText,
     super.key,
   });
 
+  ///
   final VoidCallback onExit;
+
+  ///
   final VoidCallback onPlayAgain;
+
+  ///
   final void Function(QuizStart prevEvent) onSinglePlayAgain;
+
+  ///
   final void Function(QuizType type, int timer) onStateChange;
+
+  ///
+  final String endGameInfoText;
+
+  ///
+  final String endGamePageCorrectAnswersText;
+
+  ///
+  final String endGamePageSubtitleText;
+
+  ///
+  final String endGameButtonText;
+
+  ///
+  final String playAgainButtonText;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final theme = Theme.of(context);
 
     Widget singleContent(QuizComplete state) {
-      final text1 = '${l10n.endGameInfoScore}: ${state.numberOfPoints}';
+      final text1 = '$endGameInfoText: ${state.numberOfPoints}';
       final text2 = state.type == QuizType.single
-          ? '${l10n.endGamePageCorrectAnswers}: '
+          ? '$endGamePageCorrectAnswersText: '
               '${state.numberCorrect}/${state.numberOfQuestions}'
-          : '${l10n.endGamePageCorrectAnswers}: '
+          : '$endGamePageCorrectAnswersText: '
               '${state.numberCorrect}';
 
       return Padding(
@@ -42,7 +69,7 @@ class EndGameContent extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  l10n.endGamePageSubtitle,
+                  endGamePageSubtitleText,
                   style: theme.textTheme.titleMedium,
                 ),
               ),
@@ -53,13 +80,13 @@ class EndGameContent extends StatelessWidget {
             ActionButton(
               onPress: onExit,
               isLoading: false,
-              text: l10n.endGameButton,
+              text: endGameButtonText,
             ),
             const SizedBox(height: 20),
             ActionButton(
               onPress: () => onSinglePlayAgain(state.prevEvent),
               isLoading: false,
-              text: l10n.playAgainButton,
+              text: playAgainButtonText,
             ),
             const SizedBox(height: 20),
           ],
@@ -80,7 +107,7 @@ class EndGameContent extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  l10n.endGamePageSubtitle,
+                  endGamePageSubtitleText,
                   style: theme.textTheme.titleMedium,
                 ),
               ),
@@ -107,13 +134,13 @@ class EndGameContent extends StatelessWidget {
             ActionButton(
               onPress: onExit,
               isLoading: false,
-              text: l10n.endGameButton,
+              text: endGameButtonText,
             ),
             const SizedBox(height: 20),
             ActionButton(
               onPress: onPlayAgain,
               isLoading: false,
-              text: l10n.playAgainButton,
+              text: playAgainButtonText,
             ),
             const SizedBox(height: 20),
           ],
