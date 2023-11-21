@@ -7,10 +7,8 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   fg-build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-    with:
-      flutter_channel: stable
-      working-directory: 'apps/four_gospels'
+    uses: ./apps/four_gospels/.github/workflows/main.yaml
+    # uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
 
   spell-check:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
