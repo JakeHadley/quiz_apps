@@ -7,7 +7,7 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   fg-build:
-    uses: ./apps/four_gospels/.github/workflows/main.yaml
+    uses: ./apps/four_gospels/.github/workflows/main.yaml@v1
     # uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
 
   spell-check:
