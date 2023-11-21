@@ -1,0 +1,6 @@
+target: .github/workflows
+workspaces: 
+  - name: four_gospels
+    path: ./apps/four_gospels/.github/workflows
+  - name: quiz_core
+    path: ./packages/quiz_core/.github/workflows
