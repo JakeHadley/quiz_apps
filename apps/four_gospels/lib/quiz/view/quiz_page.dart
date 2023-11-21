@@ -8,20 +8,12 @@ import 'package:four_gospels/quiz/models/quiz_type.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/models/models.dart';
 import 'package:quiz_core/quiz_widgets/quiz_wrapper.dart';
-import 'package:screenshot/screenshot.dart';
 
 @RoutePage()
-class QuizPage extends StatefulWidget {
+class QuizPage extends StatelessWidget {
   const QuizPage({super.key});
 
-  @override
-  State<QuizPage> createState() => _QuizPageState();
-}
-
-class _QuizPageState extends State<QuizPage> {
-  final ScreenshotController screenshotController = ScreenshotController();
-
-  void _exitAction() {
+  void _exitAction(BuildContext context) {
     context.read<QuizBloc>().add(QuizFinished());
     context.read<MultiPlayerBloc>().add(MultiPlayerReset());
     context.read<TimerBloc>().add(TimerReset());
@@ -55,7 +47,7 @@ class _QuizPageState extends State<QuizPage> {
       quizSubtitleOfText: l10n.quizSubtitleOf,
       endGameInfoText: l10n.endGameInfoScore,
       localeNameText: l10n.localeName,
-      exitAction: _exitAction,
+      exitAction: () => _exitAction(context),
       navigateToEndGame: (QuizType quizType) =>
           navigateToEndGame(context, quizType),
     );

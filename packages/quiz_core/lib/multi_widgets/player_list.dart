@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:four_gospels/l10n/l10n.dart';
 
+///
 class PlayerList extends StatelessWidget {
+  ///
   const PlayerList({
     required this.users,
     required this.owner,
+    required this.ownerText,
     super.key,
   });
 
+  ///
   final List<String> users;
+
+  ///
   final String owner;
+
+  ///
+  final String ownerText;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -28,7 +34,7 @@ class PlayerList extends StatelessWidget {
             itemBuilder: (context, index) {
               var text = Text(users[index]);
               if (owner == users[index]) {
-                text = Text('${users[index]} (${l10n.owner})');
+                text = Text('${users[index]} ($ownerText)');
               }
               return ListTile(
                 title: text,

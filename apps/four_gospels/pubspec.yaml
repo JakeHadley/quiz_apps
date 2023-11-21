@@ -34,9 +34,7 @@ dependencies:
   numberpicker: ^2.1.2
   path_provider: ^2.1.1
   quiz_core: ^0.0.1
-  random_string: ^2.3.1
   screenshot: ^2.1.0
-  share_plus: ^7.0.0
   shared_preferences: ^2.0.15
 
 dev_dependencies:

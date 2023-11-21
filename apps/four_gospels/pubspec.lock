@@ -901,7 +901,7 @@ packages:
     source: path
     version: "0.0.1+1"
   random_string:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: random_string
       sha256: "03b52435aae8cbdd1056cf91bfc5bf845e9706724dd35ae2e99fa14a1ef79d02"
@@ -917,7 +917,7 @@ packages:
     source: hosted
     version: "2.1.0"
   share_plus:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: share_plus
       sha256: ed3fcea4f789ed95913328e629c0c53e69e80e08b6c24542f1b3576046c614e8

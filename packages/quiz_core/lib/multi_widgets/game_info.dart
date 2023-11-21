@@ -1,27 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/multi_player_setup/widgets/share_code.dart';
-import 'package:four_gospels/quiz/models/mode.dart';
 import 'package:quiz_core/models/models.dart';
+import 'package:quiz_core/multi_widgets/share_code.dart';
 
+///
 class GameInfo extends StatelessWidget {
+  ///
   const GameInfo({
     required this.code,
     required this.numberOfQuestions,
     required this.mode,
     required this.language,
+    required this.getModeString,
+    required this.confirmQuestionsText,
+    required this.confirmDifficultyText,
+    required this.languageText,
+    required this.codeText,
+    required this.shareText,
     super.key,
   });
 
+  ///
   final String code;
+
+  ///
   final int numberOfQuestions;
+
+  ///
   final Mode mode;
+
+  ///
   final String language;
+
+  ///
+  final String Function(Mode mode) getModeString;
+
+  ///
+  final String confirmQuestionsText;
+
+  ///
+  final String confirmDifficultyText;
+
+  ///
+  final String languageText;
+
+  ///
+  final String codeText;
+
+  ///
+  final String shareText;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = context.l10n;
 
     return Column(
       children: [
@@ -34,7 +64,7 @@ class GameInfo extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  l10n.confirmSettingsNumberQuestions,
+                  confirmQuestionsText,
                   style: theme.textTheme.titleMedium,
                 ),
                 Text(
@@ -46,11 +76,11 @@ class GameInfo extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  l10n.confirmSettingsDifficulty,
+                  confirmDifficultyText,
                   style: theme.textTheme.titleMedium,
                 ),
                 Text(
-                  mode.toStringIntl(l10n),
+                  getModeString(mode),
                   style: theme.textTheme.headlineSmall,
                 ),
               ],
@@ -58,7 +88,7 @@ class GameInfo extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  l10n.quizLanguage,
+                  languageText,
                   style: theme.textTheme.titleMedium,
                 ),
                 Padding(
@@ -73,7 +103,11 @@ class GameInfo extends StatelessWidget {
             ),
           ],
         ),
-        ShareCode(code: code),
+        ShareCode(
+          code: code,
+          codeText: codeText,
+          shareText: shareText,
+        ),
       ],
     );
   }

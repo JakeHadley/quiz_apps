@@ -1,23 +1,60 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:four_gospels/app/auto_router.dart';
-import 'package:four_gospels/l10n/l10n.dart';
-import 'package:four_gospels/multi_player_setup/widgets/widgets.dart';
 import 'package:quiz_core/blocs/multi_player_bloc/multi_player_bloc.dart';
 import 'package:quiz_core/common_widgets/custom_appbar.dart';
 import 'package:quiz_core/models/models.dart';
+import 'package:quiz_core/multi_widgets/multi_player_options.dart';
 import 'package:random_string/random_string.dart';
 
-@RoutePage()
-class MultiPlayerSetupPage extends StatefulWidget {
-  const MultiPlayerSetupPage({super.key});
+///
+class MultiPlayerSetupWrapper extends StatefulWidget {
+  ///
+  const MultiPlayerSetupWrapper({
+    required this.title,
+    required this.navigateToLobby,
+    required this.nameTakenText,
+    required this.noRoomText,
+    required this.enterNameText,
+    required this.createGameText,
+    required this.orText,
+    required this.enterCodeText,
+    required this.joinGameText,
+    super.key,
+  });
+
+  ///
+  final String title;
+
+  ///
+  final VoidCallback navigateToLobby;
+
+  ///
+  final String nameTakenText;
+
+  ///
+  final String noRoomText;
+
+  ///
+  final String enterNameText;
+
+  ///
+  final String createGameText;
+
+  ///
+  final String orText;
+
+  ///
+  final String enterCodeText;
+
+  ///
+  final String joinGameText;
 
   @override
-  State<MultiPlayerSetupPage> createState() => _MultiPlayerSetupPageState();
+  State<MultiPlayerSetupWrapper> createState() =>
+      _MultiPlayerSetupWrapperState();
 }
 
-class _MultiPlayerSetupPageState extends State<MultiPlayerSetupPage> {
+class _MultiPlayerSetupWrapperState extends State<MultiPlayerSetupWrapper> {
   final _nameController = TextEditingController();
   final _codeController = TextEditingController();
 
@@ -93,19 +130,16 @@ class _MultiPlayerSetupPageState extends State<MultiPlayerSetupPage> {
       _codeEntered = false;
       _nameEntered = false;
     });
-
-    context.router.navigate(const LobbyRoute());
+    widget.navigateToLobby();
   }
 
   void onError(RoomExceptionErrorEnum error) {
     String errorStr;
     switch (error) {
       case RoomExceptionErrorEnum.name:
-        errorStr = context.l10n.nameTaken;
-        break;
+        errorStr = widget.nameTakenText;
       case RoomExceptionErrorEnum.room:
-        errorStr = context.l10n.noRoom;
-        break;
+        errorStr = widget.noRoomText;
     }
 
     ScaffoldMessenger.of(context)
@@ -123,10 +157,8 @@ class _MultiPlayerSetupPageState extends State<MultiPlayerSetupPage> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
     return Scaffold(
-      appBar: CustomAppBar(title: l10n.multiPlayerAppBar, type: QuizType.multi),
+      appBar: CustomAppBar(title: widget.title, type: QuizType.multi),
       body: MultiPlayerOptions(
         nameController: _nameController,
         codeController: _codeController,
@@ -136,6 +168,11 @@ class _MultiPlayerSetupPageState extends State<MultiPlayerSetupPage> {
         onStateChange: onStateChange,
         onError: onError,
         onJoin: onJoin,
+        enterNameText: widget.enterNameText,
+        createGameText: widget.createGameText,
+        orText: widget.orText,
+        enterCodeText: widget.enterCodeText,
+        joinGameText: widget.joinGameText,
       ),
     );
   }
