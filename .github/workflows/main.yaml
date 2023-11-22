@@ -3,11 +3,33 @@ name: melos
 on: [pull_request, push]
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+
+      - name: Bootstrap melos
+        uses: bluefireteam/melos-action@v3
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with: 
+          path: ~/.pub-cache
+          key: ${{ runner.OS }}-flutter-${{ hashFiles('**/pubspec.yaml') }}
+          restore-keys: ${{ runner.OS }}-flutter-
+
   semantic-pull-request:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   fg-build:
+    needs: setup
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
+      working_directory: 'quiz_apps/apps/four_gospels'
+
     
