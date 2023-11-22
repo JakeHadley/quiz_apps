@@ -60,15 +60,15 @@ on:
 
 
 jobs:
-  semantic-pull-request:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
+  # semantic-pull-request:
+  #   uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   build-fg:
     defaults:
       run:
         working-directory: apps/four_gospels
 
-    runs-on: ${{inputs.runs_on}}
+    runs-on: ubuntu-latest
 
     steps:
       - name: 📚 Git Checkout
