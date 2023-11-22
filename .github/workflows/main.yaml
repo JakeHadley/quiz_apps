@@ -24,7 +24,7 @@ on:
       flutter_version:
         required: false
         type: string
-        default: ""
+        default: "3.13.8"
       format_directories:
         required: false
         type: string
@@ -60,6 +60,7 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   build-fg:
+    name: Build Four Gospels
     defaults:
       run:
         working-directory: apps/four_gospels
@@ -99,5 +100,49 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
           path: apps/four_gospels/coverage/lcov.info
+          exclude: ${{inputs.coverage_excludes}}
+          min_coverage: 0
+
+  build-core:
+    name: Build Quiz Core
+    defaults:
+      run:
+        working-directory: packages/quiz_core
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.13.8
+          channel: stable
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: Bootstrap melos
+        uses: bluefireteam/melos-action@v3
+
+      - name: 📦 Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          very_good packages get --recursive --ignore=${{inputs.package_get_excludes}}
+
+      - name: ✨ Check Formatting
+        run: dart format --line-length 80 --set-exit-if-changed "lib test"
+
+      - name: 🕵️ Analyze
+        run: flutter analyze ${{inputs.analyze_directories}}
+
+      - name: 🧪 Run Tests
+        run: very_good test -j ${{inputs.concurrency}} ${{(inputs.test_recursion && '--recursive') || ''}} ${{(inputs.test_optimization && '--optimization') || '--no-optimization'}} --coverage --test-randomize-ordering-seed random
+
+      - name: 📊 Check Code Coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          path: packages/quiz_core/coverage/lcov.info
           exclude: ${{inputs.coverage_excludes}}
           min_coverage: 0

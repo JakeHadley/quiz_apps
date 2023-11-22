@@ -2,6 +2,7 @@ name: quiz_apps_workspace
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
+  flutter: "^3.13.8"
 
 dev_dependencies:
   melos: ^3.2.0
