@@ -31,8 +31,8 @@ on:
         default: "lib test"
       format_line_length:
         required: false
-        type: string
-        default: "80"
+        type: number
+        default: 80
       min_coverage:
         required: false
         type: number
@@ -41,10 +41,6 @@ on:
         required: false
         type: string
         default: "ubuntu-latest"
-      setup:
-        required: false
-        type: string
-        default: ""
       test_optimization:
         required: false
         type: boolean
@@ -74,9 +70,6 @@ jobs:
       - name: 📚 Git Checkout
         uses: actions/checkout@v4
 
-      - name: Bootstrap melos
-        uses: bluefireteam/melos-action@v3
-
       - name: 🐦 Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -85,14 +78,13 @@ jobs:
           cache: true
           cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
 
+      - name: Bootstrap melos
+        uses: bluefireteam/melos-action@v3
+
       - name: 📦 Install Dependencies
         run: |
           flutter pub global activate very_good_cli
           very_good packages get --recursive --ignore=${{inputs.package_get_excludes}}
-
-      - name: ⚙️ Run Setup
-        if: "${{inputs.setup != ''}}"
-        run: ${{inputs.setup}}
 
       - name: ✨ Check Formatting
         run: dart format --line-length ${{inputs.format_line_length}} --set-exit-if-changed ${{inputs.format_directories}}
