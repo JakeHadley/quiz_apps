@@ -1,0 +1,28 @@
+name: Build Four Gospels
+
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+jobs:
+  build-fg:
+    name: Build Four Gospels
+    defaults:
+      run:
+        working-directory: apps/four_gospels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Common Steps
+        uses: ./.github/actions/common_steps.yml
+        with:
+          flutter_version: '3.13.8'
+          flutter_channel: 'stable'
+          cache_key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock')
+          analyze_directories: 'lib test'
+          working_directory: apps/four_gospels
+          package_get_excludes: "!*"
+          concurrency: 4
+          test_recursion: false
+          test_optimization: false
+          coverage_excludes: ''

@@ -1,0 +1,72 @@
+name: 'Common Steps'
+description: 'Common steps for all jobs'
+inputs:
+  flutter_version:
+    description: 'Flutter version'
+    required: true
+  flutter_channel:
+    description: 'Flutter channel'
+    required: true
+  cache_key:
+    description: 'Cache key'
+    required: true
+  concurrency:
+    description: 'Concurrency'
+    required: true
+  analyze_directories:
+    description: 'Directories to analyze'
+    required: true
+  working_directory:
+    description: 'Working directory'
+    required: true
+  package_get_excludes:
+    description: 'Package get excludes'
+    required: true
+  test_recursion:
+    description: 'Test recursion'
+    required: true
+  test_optimization:
+    description: 'Test optimization'
+    required: true
+  coverage_excludes:
+    description: 'Coverage excludes'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: 📚 Git Checkout
+      uses: actions/checkout@v4
+
+    - name: 🐦 Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: ${{inputs.flutter_version}}
+        channel: ${{inputs.flutter_channel}}
+        cache: true
+        cache-key: ${{inputs.cache_key}}
+    
+    - name: Bootstrap melos
+      uses: bluefireteam/melos-action@v3
+
+    - name: 📦 Install Dependencies
+      run: |
+        flutter pub global activate very_good_cli
+        very_good packages get --recursive --ignore=${{inputs.package_get_excludes}}
+
+    - name: ✨ Check Formatting
+      run: dart format --line-length 80 --set-exit-if-changed "lib test"
+
+    - name: 🕵️ Analyze
+      run: flutter analyze ${{inputs.analyze_directories}}
+      shell: bash
+
+    - name: 🧪 Run Tests
+      run: very_good test -j ${{inputs.concurrency}} ${{(inputs.test_recursion && '--recursive') || ''}} ${{(inputs.test_optimization && '--optimization') || '--no-optimization'}} --coverage --test-randomize-ordering-seed random
+      shell: bash
+
+    - name: 📊 Check Code Coverage
+      uses: VeryGoodOpenSource/very_good_coverage@v2
+      with:
+        path: ${{inputs.working_directory}}/coverage/lcov.info
+        exclude: ${{inputs.coverage_excludes}}
+        min_coverage: 0
