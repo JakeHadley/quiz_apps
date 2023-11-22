@@ -5,6 +5,8 @@ on: [pull_request, push]
 jobs:
   setup:
     runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.cache.outputs.cache-hit }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,8 +21,10 @@ jobs:
         uses: actions/cache@v2
         with: 
           path: ~/.pub-cache
-          key: ${{ runner.OS }}-flutter-${{ hashFiles('**/pubspec.yaml') }}
+          key: ${{ runner.OS }}-flutter-${{ hashFiles('**/pubspec.lock') }}
           restore-keys: ${{ runner.OS }}-flutter-
+      - name: Get Flutter packages
+        run: flutter pub get
 
   semantic-pull-request:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
