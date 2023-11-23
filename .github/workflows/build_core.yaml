@@ -13,8 +13,10 @@ jobs:
         working-directory: packages/quiz_core
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout common steps
+        uses: actions/checkout@v4
       - name: Common Steps
-        uses: ./.github/actions/common_steps.yaml
+        uses: ./.github/actions/common_steps
         with:
           flutter_version: '3.13.8'
           flutter_channel: 'stable'

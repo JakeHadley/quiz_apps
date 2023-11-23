@@ -21,7 +21,7 @@ jobs:
           flutter_version: '3.13.8'
           flutter_channel: 'stable'
           cache_key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
-          analyze_directories: 'lib test'
+          analyze_directories: 'apps/four_gospels/lib apps/four_gospels/test'
           working_directory: apps/four_gospels
           package_get_excludes: "!*"
           concurrency: 4
