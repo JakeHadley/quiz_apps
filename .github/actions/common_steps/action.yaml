@@ -52,9 +52,11 @@ runs:
       run: |
         flutter pub global activate very_good_cli
         very_good packages get --recursive --ignore=${{inputs.package_get_excludes}}
+      shell: bash
 
     - name: ✨ Check Formatting
       run: dart format --line-length 80 --set-exit-if-changed "lib test"
+      shell: bash
 
     - name: 🕵️ Analyze
       run: flutter analyze ${{inputs.analyze_directories}}
