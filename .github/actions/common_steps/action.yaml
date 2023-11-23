@@ -39,6 +39,10 @@ inputs:
     description: 'Coverage excludes'
     required: false
     default: ''
+  line_length:
+    description: 'Line Length'
+    required: false
+    default: '80'
 runs:
   using: 'composite'
   steps:
@@ -63,7 +67,7 @@ runs:
       shell: bash
 
     - name: ✨ Check Formatting
-      run: dart format --line-length 80 --set-exit-if-changed '${{inputs.target_directories}}'
+      run: dart format --line-length '${{inputs.line_length}}' --set-exit-if-changed '${{inputs.target_directories}}'
       shell: bash
 
     - name: 🕵️ Analyze
