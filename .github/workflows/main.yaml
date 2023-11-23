@@ -47,7 +47,7 @@ jobs:
           flutter_version: '3.13.8'
           flutter_channel: 'stable'
           cache_key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
-          analyze_directories: 'lib test'
+          analyze_directories: 'packages/quiz_core/lib packages/quiz_core/test'
           working_directory: packages/quiz_core
           package_get_excludes: "!*"
           concurrency: 4
