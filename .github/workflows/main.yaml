@@ -1,0 +1,56 @@
+name: Quiz Apps
+
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+jobs:
+  semantic-pull-request:
+    name: Semantic PR
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
+
+  build-fg:
+    name: Build Four Gospels
+    defaults:
+      run:
+        working-directory: apps/four_gospels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout common steps
+        uses: actions/checkout@v4
+      - name: Common Steps
+        uses: ./.github/actions/common_steps
+        with:
+          flutter_version: '3.13.8'
+          flutter_channel: 'stable'
+          cache_key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+          analyze_directories: 'apps/four_gospels/lib apps/four_gospels/test'
+          working_directory: apps/four_gospels
+          package_get_excludes: "!*"
+          concurrency: 4
+          test_recursion: false
+          test_optimization: false
+          coverage_excludes: ''
+  build-core:
+    name: Build Quiz Core
+    defaults:
+      run:
+        working-directory: packages/quiz_core
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout common steps
+        uses: actions/checkout@v4
+      - name: Common Steps
+        uses: ./.github/actions/common_steps
+        with:
+          flutter_version: '3.13.8'
+          flutter_channel: 'stable'
+          cache_key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+          analyze_directories: 'lib test'
+          working_directory: packages/quiz_core
+          package_get_excludes: "!*"
+          concurrency: 4
+          test_recursion: false
+          test_optimization: false
+          coverage_excludes: ''
