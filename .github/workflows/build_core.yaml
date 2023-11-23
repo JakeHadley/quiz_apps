@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Common Steps
-        uses: ./.github/actions/common_steps.yml
+        uses: ./.github/actions/common_steps.yaml
         with:
           flutter_version: '3.13.8'
           flutter_channel: 'stable'
