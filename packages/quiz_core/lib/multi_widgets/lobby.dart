@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_core/blocs/multi_player_bloc/multi_player_bloc.dart';
-import 'package:quiz_core/blocs/quiz_bloc/quiz_bloc.dart';
+import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/common_widgets/common_widgets.dart';
 import 'package:quiz_core/models/models.dart';
-import 'package:quiz_core/multi_widgets/game_info.dart';
-import 'package:quiz_core/multi_widgets/player_list.dart';
-import 'package:quiz_core/multi_widgets/share_code.dart';
+import 'package:quiz_core/multi_widgets/multi_widgets.dart';
 
 ///
 class Lobby extends StatelessWidget {

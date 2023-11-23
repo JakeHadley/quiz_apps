@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/common_widgets/custom_appbar.dart';
 import 'package:quiz_core/models/models.dart';
-import 'package:quiz_core/multi_widgets/lobby.dart';
-import 'package:quiz_core/multi_widgets/lobby_back_button.dart';
+import 'package:quiz_core/multi_widgets/multi_widgets.dart';
 
 ///
 class LobbyWrapper extends StatelessWidget {
