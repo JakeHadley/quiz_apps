@@ -3,34 +3,42 @@ description: 'Common steps for all jobs'
 inputs:
   flutter_version:
     description: 'Flutter version'
-    required: true
+    required: false
+    default: '3.13.8'
   flutter_channel:
     description: 'Flutter channel'
-    required: true
+    required: false
+    default: 'stable'
   cache_key:
     description: 'Cache key'
-    required: true
+    required: false
+    default: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
   concurrency:
     description: 'Concurrency'
-    required: true
-  analyze_directories:
-    description: 'Directories to analyze'
+    required: false
+    default: '4'
+  target_directories:
+    description: 'Directories to target'
     required: true
   working_directory:
     description: 'Working directory'
     required: true
   package_get_excludes:
     description: 'Package get excludes'
-    required: true
+    required: false
+    default: "!*"
   test_recursion:
     description: 'Test recursion'
-    required: true
+    required: false
+    default: 'false'
   test_optimization:
     description: 'Test optimization'
-    required: true
+    required: false
+    default: 'false'
   coverage_excludes:
     description: 'Coverage excludes'
-    required: true
+    required: false
+    default: ''
 runs:
   using: 'composite'
   steps:
@@ -55,11 +63,11 @@ runs:
       shell: bash
 
     - name: ✨ Check Formatting
-      run: dart format --line-length 80 --set-exit-if-changed "lib test"
+      run: dart format --line-length 80 --set-exit-if-changed '${{inputs.target_directories}}'
       shell: bash
 
     - name: 🕵️ Analyze
-      run: flutter analyze ${{inputs.analyze_directories}}
+      run: flutter analyze ${{inputs.target_directories}}
       shell: bash
 
     - name: 🧪 Run Tests
