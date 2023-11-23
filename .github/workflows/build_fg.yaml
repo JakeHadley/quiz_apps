@@ -13,6 +13,8 @@ jobs:
         working-directory: apps/four_gospels
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout common steps
+        uses: actions/checkout@v4
       - name: Common Steps
         uses: ./.github/actions/common_steps.yaml
         with:
