@@ -67,7 +67,7 @@ runs:
       shell: bash
 
     - name: ✨ Check Formatting
-      run: dart format --line-length '${{inputs.line_length}}' --set-exit-if-changed '${{inputs.target_directories}}'
+      run: dart format --line-length ${{inputs.line_length}} --set-exit-if-changed ${{inputs.target_directories}}
       shell: bash
 
     - name: 🕵️ Analyze
