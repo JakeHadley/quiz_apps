@@ -1,5 +1,5 @@
-name: 'Common Steps'
-description: 'Common steps for all jobs'
+name: 'Verify flutter/dart'
+description: 'Basic verification for dart and flutter projects'
 inputs:
   flutter_version:
     description: 'Flutter version'
@@ -46,10 +46,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: 📚 Git Checkout
+    - name: Git Checkout
       uses: actions/checkout@v4
 
-    - name: 🐦 Setup Flutter
+    - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
         flutter-version: ${{inputs.flutter_version}}
@@ -60,25 +60,25 @@ runs:
     - name: Bootstrap melos
       uses: bluefireteam/melos-action@v3
 
-    - name: 📦 Install Dependencies
+    - name: Install Dependencies
       run: |
         flutter pub global activate very_good_cli
         very_good packages get --recursive --ignore=${{inputs.package_get_excludes}}
       shell: bash
 
-    - name: ✨ Check Formatting
+    - name: Check Formatting
       run: dart format --line-length ${{inputs.line_length}} --set-exit-if-changed ${{inputs.target_directories}}
       shell: bash
 
-    - name: 🕵️ Analyze
+    - name: Analyze
       run: flutter analyze ${{inputs.target_directories}}
       shell: bash
 
-    - name: 🧪 Run Tests
+    - name: Run Tests
       run: very_good test -j ${{inputs.concurrency}} ${{(inputs.test_recursion && '--recursive') || ''}} ${{(inputs.test_optimization && '--optimization') || '--no-optimization'}} --coverage --test-randomize-ordering-seed random
       shell: bash
 
-    - name: 📊 Check Code Coverage
+    - name: Check Code Coverage
       uses: VeryGoodOpenSource/very_good_coverage@v2
       with:
         path: ${{inputs.working_directory}}/coverage/lcov.info

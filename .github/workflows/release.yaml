@@ -1,0 +1,24 @@
+name: Four Gospels Release
+
+on: 
+  push:
+    branches: 
+      - master
+
+jobs:
+  release-fg-ios:
+    name: Release Four Gospels iOS
+    defaults:
+      run:
+        working-directory: apps/four_gospels
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+        flutter-version: '3.13.8'
+    - name: Bootstrap melos
+      uses: bluefireteam/melos-action@v3
+    - run: flutter build ipa -t lib/main_production.dart --flavor production
+    - run: xcrun altool --upload-app --type ios -f build/ios/ipa/*.ipa --apiKey ${{ secrets.APPLEAPIKEY }} --apiIssuer ${{ secrets.APPLEISSUERKEY }}
