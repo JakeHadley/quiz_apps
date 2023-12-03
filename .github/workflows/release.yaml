@@ -45,7 +45,7 @@ jobs:
         flutter-version: '3.13.8'
     - name: Bootstrap melos
       uses: bluefireteam/melos-action@v3
-    - run: flutter build ipa -t lib/main_production.dart --flavor production --export-options-plist=ios/build/ExportOptions.plist
+    - run: flutter build ipa -t lib/main_production.dart --flavor production --export-options-plist=ExportOptions.plist
     - run: xcrun altool --upload-app --type ios -f build/ios/ipa/*.ipa --apiKey ${{ secrets.APPLEAPIKEY }} --apiIssuer ${{ secrets.APPLEISSUERKEY }}
     - name: Clean up keychain and provisioning profile
       if: ${{ always() }}
