@@ -1,39 +1,13 @@
-name: Quiz Apps PR
+name: Verify Quiz Apps
 
-on:
-  pull_request:
+on: [pull_request]
 
 jobs:
   semantic-pull-request:
-    name: Semantic PR
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
-  verify-fg:
-    name: Verify Four Gospels
-    defaults:
-      run:
-        working-directory: apps/four_gospels
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout verify action
-        uses: actions/checkout@v4
-      - name: Verify project
-        uses: ./.github/actions/verify
-        with:
-          target_directories: 'apps/four_gospels/lib apps/four_gospels/test'
-          working_directory: apps/four_gospels
-  
-  verify-core:
-    name: Verify Quiz Core
-    defaults:
-      run:
-        working-directory: packages/quiz_core
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout common steps
-        uses: actions/checkout@v4
-      - name: Common Steps
-        uses: ./.github/actions/verify
-        with:
-          target_directories: 'packages/quiz_core/lib packages/quiz_core/test'
-          working_directory: packages/quiz_core
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: stable
+      flutter_version: 3.10.6
