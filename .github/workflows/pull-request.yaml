@@ -6,26 +6,50 @@ jobs:
   semantic-pull-request:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
-  build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-    with:
-      flutter_channel: stable
-      flutter_version: 3.10.6
-
-  dryrun:
+  build: 
     runs-on: ubuntu-latest
-    steps: 
-        - uses: actions/checkout@v4
-        - uses: subosito/flutter-action@v2
-          with:
-            channel: 'stable'
-            flutter-version: '3.13.8'
-        
-        - name: Set up onepub
-          run: |
-            flutter pub global activate onepub
-            export ONEPUB_TOKEN="${{ secrets.ONEPUB_T }}"; onepub import
-        - name: Dry run publish to onepub
-          id: dryrun
-          run: | 
-            dart pub publish -n
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.13.8
+          channel: stable
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: Set up onepub
+        run: |
+          flutter pub global activate onepub
+          export ONEPUB_TOKEN="${{ secrets.ONEPUB_T }}"; onepub import
+
+      - name: Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          very_good packages get --recursive --ignore="!*"
+        shell: bash
+
+      - name: Check Formatting
+        run: dart format --line-length '80' --set-exit-if-changed 'lib test'
+        shell: bash
+
+      - name: Analyze
+        run: flutter analyze lib test
+        shell: bash
+
+      - name: Run Tests
+        run: very_good test -j '4' --optimization --coverage --test-randomize-ordering-seed random
+        shell: bash
+
+      - name: Check Code Coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          path: ./coverage/lcov.info
+          exclude: ''
+          min_coverage: 0
+
+      - name: Dry run publish to onepub
+        run: | 
+          dart pub publish -n
