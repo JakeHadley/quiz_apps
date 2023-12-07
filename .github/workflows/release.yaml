@@ -19,6 +19,11 @@ jobs:
           run: |
             flutter pub global activate onepub
             export ONEPUB_TOKEN="${{ secrets.ONEPUB_T }}"; onepub import
-        - name: Publish to onepub
+        - name: Dry run publish to onepub
+          id: dryrun
           run: | 
-            dart pub publish
+            dart pub publish -n
+        - name: Publish to onepub
+          if: steps.dryrun.outcome == 'success'
+          run: | 
+            dart pub publish -f
