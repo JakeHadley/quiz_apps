@@ -17,7 +17,7 @@ jobs:
         
         - name: Set up onepub
           run: |
-            flutter pub global activate onepub
+            flutter pub global activate onepu
             export ONEPUB_TOKEN="$ONEPUB_T"; onepub import
         - name: Publish to onepub
           run: | 
