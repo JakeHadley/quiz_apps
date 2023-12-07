@@ -11,3 +11,21 @@ jobs:
     with:
       flutter_channel: stable
       flutter_version: 3.10.6
+
+  dryrun:
+    runs-on: ubuntu-latest
+    steps: 
+        - uses: actions/checkout@v4
+        - uses: subosito/flutter-action@v2
+          with:
+            channel: 'stable'
+            flutter-version: '3.13.8'
+        
+        - name: Set up onepub
+          run: |
+            flutter pub global activate onepub
+            export ONEPUB_TOKEN="${{ secrets.ONEPUB_T }}"; onepub import
+        - name: Dry run publish to onepub
+          id: dryrun
+          run: | 
+            dart pub publish -n
