@@ -1,0 +1,24 @@
+name: Publish Quiz Apps
+
+on: 
+  push:
+    branches: 
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps: 
+        - uses: actions/checkout@v4
+        - uses: subosito/flutter-action@v2
+          with:
+            channel: 'stable'
+            flutter-version: '3.13.8'
+        
+        - name: Set up onepub
+          run: |
+            flutter pub global activate onepub
+            export ONEPUB_TOKEN="${{ secrets.ONEPUB_T }}"; onepub import
+        - name: Publish to onepub
+          run: | 
+            dart pub publish
