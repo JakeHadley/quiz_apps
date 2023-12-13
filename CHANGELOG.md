@@ -17,3 +17,6 @@
 
 ## 0.0.2+5
 - config change
+
+## 0.0.2+6
+- added arrows to language picker
