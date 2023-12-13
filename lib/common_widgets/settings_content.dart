@@ -7,7 +7,7 @@ import 'package:quiz_core/common_widgets/action_button.dart';
 import 'package:quiz_core/models/models.dart';
 
 ///
-class SettingsContent extends StatelessWidget {
+class SettingsContent extends StatefulWidget {
   ///
   const SettingsContent({
     required this.type,
@@ -78,6 +78,13 @@ class SettingsContent extends StatelessWidget {
   final VoidCallback? onPress;
 
   @override
+  State<SettingsContent> createState() => _SettingsContentState();
+}
+
+class _SettingsContentState extends State<SettingsContent> {
+  final CarouselController _controller = CarouselController();
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
@@ -85,9 +92,9 @@ class SettingsContent extends StatelessWidget {
       listener: (context, state) {
         if (state is QuizLoaded) {
           if (state.type == QuizType.speed) {
-            onStateChange(timer: state.timer);
+            widget.onStateChange(timer: state.timer);
           } else {
-            onStateChange();
+            widget.onStateChange();
           }
         }
       },
@@ -96,11 +103,12 @@ class SettingsContent extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: Column(
             children: [
-              if (type == QuizType.single || type == QuizType.multi) ...[
+              if (widget.type == QuizType.single ||
+                  widget.type == QuizType.multi) ...[
                 Text(
-                  numQuestionsText,
+                  widget.numQuestionsText,
                   style: theme.textTheme.bodyLarge
-                      ?.copyWith(fontSize: isCompact == true ? 18 : 25),
+                      ?.copyWith(fontSize: widget.isCompact == true ? 18 : 25),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -109,8 +117,8 @@ class SettingsContent extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          final newQuestions = questions - 5;
-                          onChangeQuestions(newQuestions.clamp(10, 50));
+                          final newQuestions = widget.questions - 5;
+                          widget.onChangeQuestions(newQuestions.clamp(10, 50));
                         },
                         icon: const Icon(
                           Icons.arrow_back,
@@ -119,17 +127,17 @@ class SettingsContent extends StatelessWidget {
                       ),
                       NumberPicker(
                         axis: Axis.horizontal,
-                        value: questions,
+                        value: widget.questions,
                         minValue: 10,
                         maxValue: 50,
-                        onChanged: onChangeQuestions,
+                        onChanged: widget.onChangeQuestions,
                         itemWidth: 60,
                         step: 5,
                       ),
                       IconButton(
                         onPressed: () {
-                          final newQuestions = questions + 5;
-                          onChangeQuestions(newQuestions.clamp(10, 50));
+                          final newQuestions = widget.questions + 5;
+                          widget.onChangeQuestions(newQuestions.clamp(10, 50));
                         },
                         icon: const Icon(
                           Icons.arrow_forward,
@@ -140,50 +148,53 @@ class SettingsContent extends StatelessWidget {
                   ),
                 ),
                 Divider(
-                  height: isCompact == true ? 10 : 30,
+                  height: widget.isCompact == true ? 10 : 30,
                   thickness: 1,
                   indent: 40,
                   endIndent: 40,
                   color: theme.disabledColor,
                 ),
-              ] else if (type == QuizType.speed) ...[
+              ] else if (widget.type == QuizType.speed) ...[
                 Text(
-                  timerText,
+                  widget.timerText,
                   style: theme.textTheme.bodyLarge?.copyWith(fontSize: 25),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        final newTimer = timer - 15;
-                        onChangeTimer(newTimer.clamp(15, 60));
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          final newTimer = widget.timer - 15;
+                          widget.onChangeTimer(newTimer.clamp(15, 60));
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                    NumberPicker(
-                      axis: Axis.horizontal,
-                      value: timer,
-                      minValue: 15,
-                      maxValue: 60,
-                      onChanged: onChangeTimer,
-                      itemWidth: 60,
-                      step: 15,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        final newTimer = timer + 15;
-                        onChangeTimer(newTimer.clamp(15, 60));
-                      },
-                      icon: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.black,
+                      NumberPicker(
+                        axis: Axis.horizontal,
+                        value: widget.timer,
+                        minValue: 15,
+                        maxValue: 60,
+                        onChanged: widget.onChangeTimer,
+                        itemWidth: 60,
+                        step: 15,
                       ),
-                    ),
-                  ],
+                      IconButton(
+                        onPressed: () {
+                          final newTimer = widget.timer + 15;
+                          widget.onChangeTimer(newTimer.clamp(15, 60));
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Divider(
                   height: 30,
@@ -194,50 +205,76 @@ class SettingsContent extends StatelessWidget {
                 ),
               ],
               Text(
-                confirmText,
+                widget.confirmText,
                 style: theme.textTheme.bodyLarge
-                    ?.copyWith(fontSize: isCompact == true ? 18 : 25),
+                    ?.copyWith(fontSize: widget.isCompact == true ? 18 : 25),
               ),
-              SizedBox(height: isCompact == true ? 0 : 10),
+              SizedBox(height: widget.isCompact == true ? 0 : 10),
               Wrap(
                 alignment: WrapAlignment.center,
-                children: chips,
+                children: widget.chips,
               ),
               Divider(
-                height: isCompact == true ? 10 : 30,
+                height: widget.isCompact == true ? 10 : 30,
                 thickness: 1,
                 indent: 40,
                 endIndent: 40,
                 color: theme.disabledColor,
               ),
               Text(
-                languageText,
+                widget.languageText,
                 style: theme.textTheme.bodyLarge
-                    ?.copyWith(fontSize: isCompact == true ? 18 : 25),
+                    ?.copyWith(fontSize: widget.isCompact == true ? 18 : 25),
               ),
               const SizedBox(height: 10),
-              CarouselSlider(
-                items: flags,
-                options: CarouselOptions(
-                  enableInfiniteScroll: false,
-                  viewportFraction: isCompact == true ? 0.25 : 0.3,
-                  height: isCompact == true ? 50 : 60,
-                  initialPage: initialLanguage,
-                  onPageChanged: onChangeLanguage,
-                  enlargeCenterPage: true,
-                  enlargeFactor: 0.5,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: _controller.previousPage,
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Flexible(
+                      child: CarouselSlider(
+                        items: flags,
+                        carouselController: _controller,
+                        options: CarouselOptions(
+                          enableInfiniteScroll: false,
+                          viewportFraction:
+                              widget.isCompact == true ? 0.25 : 0.3,
+                          height: widget.isCompact == true ? 50 : 60,
+                          initialPage: widget.initialLanguage,
+                          onPageChanged: widget.onChangeLanguage,
+                          enlargeCenterPage: true,
+                          enlargeFactor: 0.5,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: _controller.nextPage,
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              if (type != QuizType.multi) ...[
+              if (widget.type != QuizType.multi) ...[
                 const Spacer(),
                 ActionButton(
-                  onPress: onPress == null ? () {} : onPress!,
+                  onPress: widget.onPress == null ? () {} : widget.onPress!,
                   isLoading: state is QuizLoading,
                   color: theme.colorScheme.primaryContainer,
-                  text: startButtonText,
+                  text: widget.startButtonText,
                 ),
               ],
-              SizedBox(height: isCompact == true ? 0 : 30),
+              SizedBox(height: widget.isCompact == true ? 0 : 30),
             ],
           ),
         );
