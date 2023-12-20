@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/common_widgets/action_button.dart';
-import 'package:quiz_core/models/quiz_type.dart';
+import 'package:quiz_core/models/models.dart';
 import 'package:quiz_core/quiz_widgets/info_box.dart';
 
 ///
@@ -18,6 +18,8 @@ class EndGameContent extends StatelessWidget {
     required this.endGamePageSubtitleText,
     required this.endGameButtonText,
     required this.playAgainButtonText,
+    required this.modeText,
+    required this.getModeString,
     super.key,
   });
 
@@ -48,17 +50,26 @@ class EndGameContent extends StatelessWidget {
   ///
   final String playAgainButtonText;
 
+  ///
+  final String modeText;
+
+  ///
+  final String Function(Mode mode) getModeString;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     Widget singleContent(QuizComplete state) {
-      final text1 = '$endGameInfoText: ${state.numberOfPoints}';
+      final text1 = state.type != QuizType.speed
+          ? '$endGameInfoText: ${state.numberOfPoints}/${state.possiblePoints}'
+          : '$endGameInfoText: ${state.numberOfPoints}';
       final text2 = state.type == QuizType.single
           ? '$endGamePageCorrectAnswersText: '
               '${state.numberCorrect}/${state.numberOfQuestions}'
           : '$endGamePageCorrectAnswersText: '
               '${state.numberCorrect}';
+      final text3 = '$modeText: ${getModeString(state.mode)}';
 
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -75,7 +86,7 @@ class EndGameContent extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 54),
-            InfoBox(text1: text1, text2: text2),
+            InfoBox(text1: text1, text2: text2, text3: text3),
             const Spacer(),
             ActionButton(
               onPress: onExit,

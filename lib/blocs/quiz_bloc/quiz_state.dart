@@ -25,6 +25,7 @@ class QuizLoaded extends QuizState {
     required this.mode,
     required this.type,
     required this.prevEvent,
+    required this.possiblePoints,
     this.numberOfPoints = 0,
     this.numberCorrect = 0,
     this.currentQuestionIndex = 0,
@@ -42,6 +43,7 @@ class QuizLoaded extends QuizState {
     Mode? mode,
     QuizType? type,
     QuizStart? prevEvent,
+    int? possiblePoints,
     int? numberOfPoints,
     int? numberCorrect,
     int? currentQuestionIndex,
@@ -57,6 +59,7 @@ class QuizLoaded extends QuizState {
       mode: mode ?? this.mode,
       type: type ?? this.type,
       prevEvent: prevEvent ?? this.prevEvent,
+      possiblePoints: possiblePoints ?? this.possiblePoints,
       numberOfPoints: numberOfPoints ?? this.numberOfPoints,
       numberCorrect: numberCorrect ?? this.numberCorrect,
       currentQuestionIndex: currentQuestionIndex ?? this.currentQuestionIndex,
@@ -83,6 +86,9 @@ class QuizLoaded extends QuizState {
 
   ///
   final QuizStart prevEvent;
+
+  ///
+  final int possiblePoints;
 
   ///
   final int numberOfPoints;
@@ -115,6 +121,7 @@ class QuizLoaded extends QuizState {
         mode,
         type,
         prevEvent,
+        possiblePoints,
         numberOfPoints,
         numberCorrect,
         currentQuestionIndex,
@@ -135,6 +142,8 @@ class QuizComplete extends QuizState {
     required this.numberOfPoints,
     required this.type,
     required this.prevEvent,
+    required this.mode,
+    required this.possiblePoints,
   });
 
   ///
@@ -151,4 +160,10 @@ class QuizComplete extends QuizState {
 
   ///
   final QuizStart prevEvent;
+
+  ///
+  final Mode mode;
+
+  ///
+  final int possiblePoints;
 }
