@@ -49,6 +49,7 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
         type: event.type,
         timer: event.timer ?? 15,
         prevEvent: event,
+        possiblePoints: _getPossiblePoints(questions, event.type, event.mode),
       ),
     );
   }
@@ -76,6 +77,8 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
           numberCorrect: numberCorrect,
           type: prevState.type,
           prevEvent: prevState.prevEvent,
+          mode: prevState.mode,
+          possiblePoints: prevState.possiblePoints,
         ),
       );
     } else {
@@ -134,6 +137,8 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
         numberOfPoints: prevState.numberOfPoints,
         type: prevState.type,
         prevEvent: prevState.prevEvent,
+        mode: prevState.mode,
+        possiblePoints: prevState.possiblePoints,
       ),
     );
   }
@@ -149,4 +154,19 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
         Answer(isCorrect: false, key: 'D', text: question.wrongAnswer3),
       ])
         ..shuffle();
+
+  int _getPossiblePoints(List<Question> questions, QuizType type, Mode mode) {
+    if (type == QuizType.speed) {
+      return 0;
+    }
+
+    var possiblePoints = 0;
+
+    for (var i = 0; i < questions.length; i++) {
+      final points = getPoints(questions[i].mode, type);
+      possiblePoints += points;
+    }
+
+    return possiblePoints;
+  }
 }

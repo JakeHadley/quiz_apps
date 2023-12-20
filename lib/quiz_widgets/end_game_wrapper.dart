@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_core/blocs/blocs.dart';
 import 'package:quiz_core/common_widgets/custom_appbar.dart';
-import 'package:quiz_core/models/quiz_type.dart';
+import 'package:quiz_core/models/models.dart';
 import 'package:quiz_core/quiz_widgets/end_game_content.dart';
 
 ///
@@ -19,6 +19,8 @@ class EndGameWrapper extends StatelessWidget {
     required this.endGamePageSubtitleText,
     required this.endGameButtonText,
     required this.playAgainButtonText,
+    required this.modeText,
+    required this.getModeString,
     super.key,
   });
 
@@ -51,6 +53,12 @@ class EndGameWrapper extends StatelessWidget {
 
   ///
   final String playAgainButtonText;
+
+  ///
+  final String modeText;
+
+  ///
+  final String Function(Mode mode) getModeString;
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +99,8 @@ class EndGameWrapper extends StatelessWidget {
         endGamePageSubtitleText: endGamePageSubtitleText,
         endGameButtonText: endGameButtonText,
         playAgainButtonText: playAgainButtonText,
+        getModeString: getModeString,
+        modeText: modeText,
       ),
     );
   }
