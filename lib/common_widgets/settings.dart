@@ -109,7 +109,7 @@ class _SettingsState extends State<Settings> {
     final mode = Mode.values[index];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: ChoiceChip(
         selectedColor: theme.primaryColorLight,
         label: Text(

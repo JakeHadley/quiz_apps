@@ -132,6 +132,10 @@ class _QuizWrapperState extends State<QuizWrapper> {
           ),
           ElevatedButton(
             onPressed: () => feedbackAction(info),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).primaryColor,
+              foregroundColor: Theme.of(context).colorScheme.onPrimary,
+            ),
             child: Text(widget.continueText),
           ),
         ],
@@ -260,6 +264,7 @@ class _QuizWrapperState extends State<QuizWrapper> {
 
         if (mounted) {
           Future.delayed(const Duration(seconds: 1), () {
+            if (!mounted) return;
             context
                 .read<QuizBloc>()
                 .add(QuizNextQuestion(questionMode: questionMode));
@@ -314,6 +319,7 @@ class _QuizWrapperState extends State<QuizWrapper> {
   Widget build(BuildContext context) {
     return Screenshot(
       controller: screenshotController,
+      // ignore: deprecated_member_use
       child: WillPopScope(
         onWillPop: _onWillPop,
         child: BlocBuilder<QuizBloc, QuizState>(

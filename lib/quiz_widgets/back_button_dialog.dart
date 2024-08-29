@@ -34,6 +34,10 @@ class BackButtonDialog extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: exitAction,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Theme.of(context).primaryColor,
+            foregroundColor: Theme.of(context).colorScheme.onPrimary,
+          ),
           child: Text(quitText),
         ),
       ],

@@ -61,7 +61,12 @@ class SinglePlayerSetupWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: title),
+      appBar: CustomAppBar(
+        title: title,
+        backButton: BackButton(
+          color: Theme.of(context).iconTheme.color,
+        ),
+      ),
       body: Settings(
         type: QuizType.single,
         onStateChange: onStateChange,

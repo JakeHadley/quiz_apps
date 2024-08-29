@@ -151,6 +151,7 @@ class _MultiPlayerSetupWrapperState extends State<MultiPlayerSetupWrapper> {
         )
         .closed
         .then((reason) {
+      if (!mounted) return;
       context.read<MultiPlayerBloc>().add(MultiPlayerReset());
     });
   }
@@ -158,7 +159,13 @@ class _MultiPlayerSetupWrapperState extends State<MultiPlayerSetupWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: widget.title, type: QuizType.multi),
+      appBar: CustomAppBar(
+        title: widget.title,
+        type: QuizType.multi,
+        backButton: BackButton(
+          color: Theme.of(context).iconTheme.color,
+        ),
+      ),
       body: MultiPlayerOptions(
         nameController: _nameController,
         codeController: _codeController,

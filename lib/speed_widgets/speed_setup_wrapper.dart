@@ -62,7 +62,13 @@ class SpeedSetupWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: title, type: QuizType.speed),
+      appBar: CustomAppBar(
+        title: title,
+        type: QuizType.speed,
+        backButton: BackButton(
+          color: Theme.of(context).iconTheme.color,
+        ),
+      ),
       body: Settings(
         type: QuizType.speed,
         onStateChange: onStateChange,

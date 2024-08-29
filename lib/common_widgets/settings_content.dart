@@ -82,7 +82,7 @@ class SettingsContent extends StatefulWidget {
 }
 
 class _SettingsContentState extends State<SettingsContent> {
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -210,10 +210,7 @@ class _SettingsContentState extends State<SettingsContent> {
                     ?.copyWith(fontSize: widget.isCompact == true ? 18 : 25),
               ),
               SizedBox(height: widget.isCompact == true ? 0 : 10),
-              Wrap(
-                alignment: WrapAlignment.center,
-                children: widget.chips,
-              ),
+              Wrap(children: widget.chips),
               Divider(
                 height: widget.isCompact == true ? 10 : 30,
                 thickness: 1,

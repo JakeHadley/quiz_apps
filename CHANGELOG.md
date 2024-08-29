@@ -20,3 +20,6 @@
 
 ## 0.0.2+6
 - added arrows to language picker
+
+## 0.0.2+7
+- general cleanup for updated android version
