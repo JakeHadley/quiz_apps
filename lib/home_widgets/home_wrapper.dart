@@ -1,9 +1,10 @@
+import 'package:advanced_in_app_review/advanced_in_app_review.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_core/common_widgets/custom_appbar.dart';
 import 'package:quiz_core/home_widgets/game_options.dart';
 
 ///
-class HomeWrapper extends StatelessWidget {
+class HomeWrapper extends StatefulWidget {
   ///
   const HomeWrapper({
     required this.title,
@@ -46,18 +47,34 @@ class HomeWrapper extends StatelessWidget {
   final String speedText;
 
   @override
+  State<HomeWrapper> createState() => _HomeWrapperState();
+}
+
+class _HomeWrapperState extends State<HomeWrapper> {
+  @override
+  void initState() {
+    super.initState();
+    AdvancedInAppReview()
+        .setMinDaysBeforeRemind(7)
+        .setMinDaysAfterInstall(2)
+        .setMinLaunchTimes(2)
+        .setMinSecondsBeforeShowDialog(4)
+        .monitor();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: title),
+      appBar: CustomAppBar(title: widget.title),
       body: GameOptions(
-        navigateToSingle: navigateToSingle,
-        navigateToMulti: navigateToMulti,
-        navigateToSpeed: navigateToSpeed,
-        onNoConnection: onNoConnection,
-        subtitleText: subtitleText,
-        singleText: singleText,
-        multiText: multiText,
-        speedText: speedText,
+        navigateToSingle: widget.navigateToSingle,
+        navigateToMulti: widget.navigateToMulti,
+        navigateToSpeed: widget.navigateToSpeed,
+        onNoConnection: widget.onNoConnection,
+        subtitleText: widget.subtitleText,
+        singleText: widget.singleText,
+        multiText: widget.multiText,
+        speedText: widget.speedText,
       ),
     );
   }

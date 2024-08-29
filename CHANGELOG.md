@@ -23,3 +23,5 @@
 
 ## 0.0.2+7
 - general cleanup for updated android version
+- Added more details to the info box, added in-app review
+

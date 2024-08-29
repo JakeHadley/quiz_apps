@@ -6,6 +6,7 @@ class InfoBox extends StatelessWidget {
   const InfoBox({
     required this.text1,
     required this.text2,
+    required this.text3,
     super.key,
   });
 
@@ -14,6 +15,9 @@ class InfoBox extends StatelessWidget {
 
   ///
   final String text2;
+
+  ///
+  final String text3;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,12 @@ class InfoBox extends StatelessWidget {
               const SizedBox(height: 20),
               Text(
                 text2,
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                text3,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
