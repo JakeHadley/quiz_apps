@@ -27,6 +27,7 @@ class QuizBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackButton(
+      color: Theme.of(context).iconTheme.color,
       onPressed: () {
         showDialog<void>(
           context: context,

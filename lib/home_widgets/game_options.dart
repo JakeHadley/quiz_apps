@@ -45,15 +45,17 @@ class GameOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return StreamBuilder<ConnectivityResult>(
+    return StreamBuilder<List<ConnectivityResult>>(
       stream: Connectivity().onConnectivityChanged,
       builder: (context, snapshot) {
         VoidCallback multiPlayerFunction;
         Color multiPlayerColor;
 
         if (snapshot.hasData &&
-            (snapshot.data == ConnectivityResult.mobile ||
-                snapshot.data == ConnectivityResult.wifi)) {
+            snapshot.data != null &&
+            (snapshot.data!.contains(ConnectivityResult.mobile) ||
+                snapshot.data!.contains(ConnectivityResult.wifi) ||
+                snapshot.data!.contains(ConnectivityResult.ethernet))) {
           multiPlayerFunction = navigateToMulti;
           multiPlayerColor = theme.colorScheme.secondary;
         } else {

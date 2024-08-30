@@ -48,6 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (feedbackAction != null) ...[
           IconButton(
             icon: const Icon(Icons.feedback_outlined),
+            color: Theme.of(context).iconTheme.color,
             onPressed: feedbackAction,
           ),
         ],
