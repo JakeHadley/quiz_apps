@@ -25,7 +25,6 @@
 - general cleanup for updated android version
 - Added more details to the info box, added in-app review
 
-
 ## 0.0.2+8
 - yaml fixes
 
@@ -34,3 +33,6 @@
 
 ## 0.0.2+10
 - yaml fix
+
+## 0.0.2+11
+- test fix
