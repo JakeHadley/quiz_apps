@@ -1,12 +1,12 @@
 name: quiz_core
 description: Quiz Core
-version: 0.0.2+8
+version: 0.0.2+9
 publish_to: https://onepub.dev/api/kxhbxpsdav/
 repository: https://github.com/JakeHadley/quiz_apps
 
 environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
 
 dependencies:
   advanced_in_app_review: ^1.2.1
